@@ -1,0 +1,17 @@
+/**
+ *
+ * You can write your CSS code here, DO NOT touch the default JavaScript file
+ * because it will make it harder for you to update.
+ *
+ */
+
+/*# sourceMappingURL=custom.css.map */
+
+.galery-i .galery img {width: 150px;height: auto;}
+.galery-i .galery .center-action{display: table-cell;vertical-align: middle; }
+.galery .center-action a{font-size: 12px; }
+.galery-t .galery img {width: 50px;height: auto;}
+
+.card-header.space {justify-content: space-between;}
+.card-header.space .btn {border-radius: 0.25rem !important;line-height: 24px;padding: 0.3rem 0.8rem;
+letter-spacing: .5px;}

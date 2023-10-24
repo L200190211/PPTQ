@@ -30,6 +30,7 @@
                                         <table id="example" class="table table-striped galery-t" style="width:100%">
                                             <thead>
                                                 <tr>
+                                                    <th>No</th>
                                                     <th>Galery</th>
                                                     <th>Name</th>
                                                     <th>Title</th>
@@ -37,48 +38,40 @@
                                                 </tr>
                                             </thead>
                                             <tbody class="galery">
-                                                <tr>
-                                                    <td>
-                                                        <img src="{{ asset('assets2/img/avatar/avatar-1.png') }}"
-                                                            alt="">
-                                                    </td>
-                                                    <td>Moh Yamin</td>
-                                                    <td>Kepala Sekolah</td>
-                                                    <td class="center-action">
-                                                        <a href="#" class="btn btn-icon icon-left btn-primary">
-                                                            <i class="far fa-edit"></i>Edit</a>
-                                                        <a href="#" class="btn btn-danger">
-                                                            <i class="fas fa-times"></i> Delete</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="{{ asset('assets2/img/avatar/avatar-1.png') }}"
-                                                            alt="">
-                                                    </td>
-                                                    <td>Moh Hatta</td>
-                                                    <td>Wakil Kepala Sekolah</td>
-                                                    <td class="center-action">
-                                                        <a href="#" class="btn btn-icon icon-left btn-primary">
-                                                            <i class="far fa-edit"></i>Edit</a>
-                                                        <a href="#" class="btn btn-danger">
-                                                            <i class="fas fa-times"></i> Delete</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="{{ asset('assets2/img/avatar/avatar-1.png') }}"
-                                                            alt="">
-                                                    </td>
-                                                    <td>Moh Hatta</td>
-                                                    <td>Wakil Kepala Sekolah</td>
-                                                    <td class="center-action">
-                                                        <a href="#" class="btn btn-icon icon-left btn-primary">
-                                                            <i class="far fa-edit"></i>Edit</a>
-                                                        <a href="#" class="btn btn-danger">
-                                                            <i class="fas fa-times"></i> Delete</a>
-                                                    </td>
-                                                </tr>
+                                                <?php $i = 1; ?>
+                                                @foreach ($data as $datas)
+                                                    <tr>
+                                                        <th scope="row" style="width: 2%;">{{ $i++ }}</th>
+                                                        <td style="width: 2%;">
+                                                            {{-- data available --}}
+                                                            @if (File::exists(public_path('img/sampul/' . $datas->sampul)))
+                                                                <img src="/img/sampul/{{ $datas->sampul }}" alt=""
+                                                                    width="50px">
+                                                                {{-- data null --}}
+                                                            @elseif (is_null($datas->sampul))
+                                                                <img src="{{ asset('img/sampul/team.jpg') }}" alt=""
+                                                                    width="50px">
+                                                                {{-- file not found --}}
+                                                            @else
+                                                                <img src="{{ asset('img/sampul/team.jpg') }}" alt=""
+                                                                    width="50px">
+                                                            @endif
+                                                        </td>
+                                                        {{-- <td>
+                                                            <img src="{{ asset('assets2/img/avatar/avatar-1.png') }}"
+                                                                alt="">
+                                                        </td> --}}
+                                                        <td>{{ $datas->name }}</td>
+                                                        <td>{{ $datas->title }}</td>
+                                                        <td class="center-action">
+                                                            <a href="/team/editteam/{{ $datas->id }}"
+                                                                class="btn btn-icon icon-left btn-primary">
+                                                                <i class="far fa-edit"></i>Edit</a>
+                                                            <a href="/delteam/{{ $datas->id }}" class="btn btn-danger">
+                                                                <i class="fas fa-times"></i> Delete</a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

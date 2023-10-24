@@ -93,8 +93,8 @@
                             <div class="card-header">
                                 <h4>Add Team</h4>
                             </div>
-                            <form action="/addteamid" id="addteamid" method="POST" enctype="multipart/form-data"
-                                class="needs-validation">
+                            <form action="/editteamid/{{ $data->id }}" id="editteamid" method="POST"
+                                enctype="multipart/form-data" class="needs-validation">
                                 @csrf
                                 <div class="avatar-upload">
                                     <div class="avatar-edit">
@@ -111,14 +111,16 @@
                                     <div class="row">
                                         <div class="form-group col-md-6 col-12">
                                             <label>Name</label>
-                                            <input type="text" class="form-control" required="" name="name">
+                                            <input type="text" class="form-control" required="" name="name"
+                                                value="{{ $data->name }}">
                                             <div class="invalid-feedback">
                                                 Please fill in the name
                                             </div>
                                         </div>
                                         <div class="form-group col-md-6 col-12">
                                             <label>Title</label>
-                                            <input type="text" class="form-control" required="" name="title">
+                                            <input type="text" class="form-control" required="" name="title"
+                                                value="{{ $data->title }}">
                                             <div class="invalid-feedback">
                                                 Please fill in the title / position
                                             </div>
@@ -127,14 +129,16 @@
                                     <div class="row">
                                         <div class="form-group col-md-6 col-12">
                                             <label>Email</label>
-                                            <input type="email" class="form-control" required="" name="email">
+                                            <input type="email" class="form-control" required="" name="email"
+                                                value="{{ $data->email }}">
                                             <div class="invalid-feedback">
                                                 Please fill in the email
                                             </div>
                                         </div>
                                         <div class="form-group col-md-6 col-12">
                                             <label>Phone</label>
-                                            <input type="tel" class="form-control" name="phone">
+                                            <input type="tel" class="form-control" name="phone"
+                                                value="{{ $data->phone }}">
                                             <div class="invalid-feedback">
                                                 Please fill in the email
                                             </div>

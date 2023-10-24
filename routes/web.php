@@ -41,6 +41,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/team', [TeamController::class, 'team'])->name('team');
     Route::get('/team/add', [TeamController::class, 'add'])->name('addteam');
+    Route::post('/addteamid', [TeamController::class, 'addteamId'])->name('addteamId');
+    Route::get('/team/editteam/{id}', [TeamController::class, 'editteam'])->name('editteam');
+    Route::post('/editteamid/{id}', [TeamController::class, 'editteamId'])->name('editteamid');
+    Route::get('/delteam/{id}', [TeamController::class, 'delteam'])->name('delteam');
+
 
     Route::get('/article', [ArticleController::class, 'article'])->name('article');
 });

@@ -24,6 +24,8 @@ Route::get('/profile', [GuestController::class, 'profile'])->name('profile');
 Route::get('/galeri', [GuestController::class, 'galeri'])->name('galeri');
 Route::get('/psshb', [GuestController::class, 'psshb'])->name('psshb');
 Route::get('/contact', [GuestController::class, 'contact'])->name('contact');
+Route::get('/regist', [UserController::class, 'regist'])->name('regist');
+Route::post('/regist/addregist', [UserController::class, 'addregist'])->name('regist/addregist');
 
 Auth::routes();
 

@@ -47,7 +47,27 @@ class UserController extends Controller
                 $data->password_real = $request['newpassword'];
                 $data->save();}
         } else {
-            dd('hmm');
+
         }
+    }
+
+    // Pemberkasan
+    function regist(){
+        return view('guest.registration');
+    }
+    public function addregist(Request $request) {
+        $data = new User();
+        $data->name     = $request['name'];
+        $data->username     = $request['username'];
+        $data->email    = $request['email'];
+        $data->address    = $request['address'];
+        $data->admin    = 'user';
+        $data->password = Hash::make($request['password']);
+        $data->password_real    = $request['password'];
+        $data->tempat_lahir    = $request['tempat'];
+        $data->tgl_lahir    = $request['tgl_lahir'];
+
+        $data->save();
+        return redirect()->route('login');
     }
 }

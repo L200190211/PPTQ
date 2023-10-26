@@ -93,18 +93,26 @@
                             <a class="nav-link" href="{{ route('home') }}">
                                 <i class="fas fa-fire"></i><span>Dashboard</span></a>
                         </li>
-                        <li class="{{ request()->is('galery') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('galery') }}">
-                                <i class="fas fa-th"></i><span>Galery</span></a>
-                        </li>
-                        <li class="{{ request()->is('team*') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('team') }}">
-                                <i class="fa fa-users" aria-hidden="true"></i><span>Our Team</span></a>
-                        </li>
-                        <li class="{{ request()->is('article') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('article') }}">
-                                <i class="fas fa-newspaper" aria-hidden="true"></i><span>Article</span></a>
-                        </li>
+                        @if (\Auth::user()->admin == 'user')
+                            <li class="{{ request()->is('home') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('home') }}">
+                                    <i class="fas fa-tasks"></i><span>Activity</span></a>
+                            </li>
+                        @endif
+                        @if (\Auth::user()->admin == 'super_admin')
+                            <li class="{{ request()->is('galery') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('galery') }}">
+                                    <i class="fas fa-th"></i><span>Galery</span></a>
+                            </li>
+                            <li class="{{ request()->is('team*') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('team') }}">
+                                    <i class="fa fa-users" aria-hidden="true"></i><span>Our Team</span></a>
+                            </li>
+                            <li class="{{ request()->is('article') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('article') }}">
+                                    <i class="fas fa-newspaper" aria-hidden="true"></i><span>Article</span></a>
+                            </li>
+                        @endif
                         <li class="menu-header">Pages</li>
                         <li class="dropdown {{ request()->is('user*') ? 'active' : '' }}">
                             <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i>

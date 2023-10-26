@@ -25,6 +25,7 @@ class UserSeeder extends Seeder
             'password_real' => 'superadmin',
             'admin' => 'super_admin',
             'no_tlp' => '085801411465',
+            'address' => 'Jakarta, Indonesia',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]

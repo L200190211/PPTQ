@@ -79,7 +79,7 @@
                             <li><a href="#">Kesantrian</a></li>
                         </ul>
                     </li>
-                    <li><a class="nav-link scrollto {{ request()->is('psshb*') ? 'active' : '' }}"
+                    <li><a class="nav-link scrollto {{ request()->is('psshb*', 'regist*') ? 'active' : '' }}"
                             href="{{ route('psshb') }}">PSSHB</a></li>
                     <li><a class="nav-link scrollto {{ request()->is('contact') ? 'active' : '' }}"
                             href="{{ route('contact') }}">Contact</a></li>

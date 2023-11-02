@@ -65,8 +65,8 @@
                             <i class="bi bi-chevron-down"></i>
                         </a>
                         <ul>
-                            <li><a href="#">MTS Tahfizhul Qur'an Al</a></li>
-                            <li><a href="#">MA Tahfizhul Qur'an Al Rasyid</a></li>
+                            <li><a href="{{ route('unit/mts') }}">MTS Tahfizhul Qur'an Al</a></li>
+                            <li><a href="{{ route('unit/ma') }}">MA Tahfizhul Qur'an Al Rasyid</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -75,8 +75,8 @@
                             <i class="bi bi-chevron-down"></i>
                         </a>
                         <ul>
-                            <li><a href="#">Ketahfizhan</a></li>
-                            <li><a href="#">Kesantrian</a></li>
+                            <li><a href="{{ route('divisi/tahfiz') }}">Ketahfizhan</a></li>
+                            <li><a href="{{ route('divisi/santri') }}">Kesantrian</a></li>
                         </ul>
                     </li>
                     <li><a class="nav-link scrollto {{ request()->is('psshb*', 'regist*') ? 'active' : '' }}"

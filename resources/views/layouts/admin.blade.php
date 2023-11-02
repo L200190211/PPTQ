@@ -102,6 +102,10 @@
                         @if (\Auth::user()->admin == 'super_admin')
                             <li class="{{ request()->is('galery') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('galery') }}">
+                                    <i class="fas fa-th"></i><span>PPSHB</span></a>
+                            </li>
+                            <li class="{{ request()->is('galery') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('galery') }}">
                                     <i class="fas fa-th"></i><span>Galery</span></a>
                             </li>
                             <li class="{{ request()->is('team*') ? 'active' : '' }}">

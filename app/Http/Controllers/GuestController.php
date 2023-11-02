@@ -22,9 +22,25 @@ class GuestController extends Controller
     {
         return view('guest.psshb');
     }
-    
+
     public function contact()
     {
         return view('guest.contact');
+    }
+    public function unitmts()
+    {
+        return view('guest.unit-mts');
+    }
+    public function unitma()
+    {
+        return view('guest.unit-ma');
+    }
+    public function tahfiz()
+    {
+        return view('guest.divisi-tahfiz');
+    }
+    public function santri()
+    {
+        return view('guest.divisi-santri');
     }
 }

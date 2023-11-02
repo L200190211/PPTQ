@@ -24,6 +24,10 @@ Route::get('/profile', [GuestController::class, 'profile'])->name('profile');
 Route::get('/galeri', [GuestController::class, 'galeri'])->name('galeri');
 Route::get('/psshb', [GuestController::class, 'psshb'])->name('psshb');
 Route::get('/contact', [GuestController::class, 'contact'])->name('contact');
+Route::get('/unit/mts', [GuestController::class, 'unitmts'])->name('unit/mts');
+Route::get('/unit/ma', [GuestController::class, 'unitma'])->name('unit/ma');
+Route::get('/divisi/tahfiz', [GuestController::class, 'tahfiz'])->name('divisi/tahfiz');
+Route::get('/divisi/santri', [GuestController::class, 'santri'])->name('divisi/santri');
 Route::get('/regist', [UserController::class, 'regist'])->name('regist');
 Route::post('/regist/addregist', [UserController::class, 'addregist'])->name('regist/addregist');
 

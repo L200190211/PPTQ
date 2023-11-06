@@ -28,9 +28,10 @@ class TeamController extends Controller
 
         if ($request->has('sampul')) {
             $image = $request->file('sampul');
-            $filename = $image->getClientOriginalName();
+            $file_extension = $request->file('sampul')->getClientOriginalExtension();
+            $filename = $request['name'] . rand(100, 999) . '.' . $file_extension;;
             $image->move('img/sampul/', $filename);
-            $data->sampul = $request->file('sampul')->getClientOriginalName();
+            $data->sampul = $filename;
         }
         $data->save();
         return redirect()->route('team');

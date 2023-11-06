@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/user/edituser', [UserController::class, 'EditUser'])->name('user/edituser');
     Route::get('/user/reset', [UserController::class, 'reset'])->name('reset');
     Route::post('/user/resetpassword', [UserController::class, 'resetpassword'])->name('user/resetpassword');
+    Route::get('/activity', [UserController::class, 'activity'])->name('activity');
 
     Route::get('/galery', [GaleryController::class, 'galery'])->name('galery');
 

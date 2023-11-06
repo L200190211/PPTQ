@@ -43,17 +43,13 @@
             <nav class="navbar navbar-expand-lg main-navbar">
                 <form class="form-inline mr-auto">
                     <ul class="navbar-nav mr-3">
-                        <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i
-                                    class="fas fa-bars"></i></a></li>
-                        <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i
-                                    class="fas fa-search"></i></a></li>
+                        <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+                        <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
                     </ul>
                 </form>
                 <ul class="navbar-nav navbar-right">
-                    <li class="dropdown"><a href="#" data-toggle="dropdown"
-                            class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="{{ asset('assets2/img/avatar/avatar-1.png') }}"
-                                class="rounded-circle mr-1">
+                    <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                            <img alt="image" src="{{ asset('assets2/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
                             <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -65,8 +61,7 @@
                                 <i class="fas fa-cog"></i> Settings
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item  has-icon text-danger" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
+                            <a class="dropdown-item  has-icon text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
                                           document.getElementById('logout-form').submit();">
                                 <i class="fas fa-sign-out-alt"></i>
                                 Logout
@@ -94,28 +89,28 @@
                                 <i class="fas fa-fire"></i><span>Dashboard</span></a>
                         </li>
                         @if (\Auth::user()->admin == 'user')
-                            <li class="{{ request()->is('home') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ route('home') }}">
-                                    <i class="fas fa-tasks"></i><span>Activity</span></a>
-                            </li>
+                        <li class="{{ request()->is('activity') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('activity') }}">
+                                <i class="fas fa-tasks"></i><span>Activity</span></a>
+                        </li>
                         @endif
                         @if (\Auth::user()->admin == 'super_admin')
-                            <li class="{{ request()->is('galery') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ route('galery') }}">
-                                    <i class="fas fa-th"></i><span>PPSHB</span></a>
-                            </li>
-                            <li class="{{ request()->is('galery') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ route('galery') }}">
-                                    <i class="fas fa-th"></i><span>Galery</span></a>
-                            </li>
-                            <li class="{{ request()->is('team*') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ route('team') }}">
-                                    <i class="fa fa-users" aria-hidden="true"></i><span>Our Team</span></a>
-                            </li>
-                            <li class="{{ request()->is('article') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ route('article') }}">
-                                    <i class="fas fa-newspaper" aria-hidden="true"></i><span>Article</span></a>
-                            </li>
+                        <li class="{{ request()->is('galery') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('galery') }}">
+                                <i class="fas fa-th"></i><span>PPSHB</span></a>
+                        </li>
+                        <li class="{{ request()->is('galery') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('galery') }}">
+                                <i class="fas fa-th"></i><span>Galery</span></a>
+                        </li>
+                        <li class="{{ request()->is('team*') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('team') }}">
+                                <i class="fa fa-users" aria-hidden="true"></i><span>Our Team</span></a>
+                        </li>
+                        <li class="{{ request()->is('article') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('article') }}">
+                                <i class="fas fa-newspaper" aria-hidden="true"></i><span>Article</span></a>
+                        </li>
                         @endif
                         <li class="menu-header">Pages</li>
                         <li class="dropdown {{ request()->is('user*') ? 'active' : '' }}">
@@ -178,6 +173,7 @@
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 
     @yield('scriptJS')
+    @include('sweetalert::alert')
 </body>
 
 </html>

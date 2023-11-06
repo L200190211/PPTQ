@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Alert;
 
 class UserController extends Controller
 {
@@ -23,7 +24,10 @@ class UserController extends Controller
             $data->name     = $request['name'];
             $data->email    = $request['email'];
             $data->no_tlp   = $request['no_tlp'];
+            $data->tempat_lahir    = $request['tempat'];
+            $data->tgl_lahir    = $request['tgl_lahir'];
             $data->save();
+            toast('Data Berhasil Diperbarui', 'success');
             return redirect()->route('user');
         } else {
             return redirect()->back();
@@ -45,29 +49,44 @@ class UserController extends Controller
             if ($data) {
                 $data->password = Hash::make($request['newpassword']);
                 $data->password_real = $request['newpassword'];
-                $data->save();}
+                $data->save();
+            }
         } else {
-
         }
     }
 
-    // Pemberkasan
-    function regist(){
+    // Daftar PPSHB
+    function regist()
+    {
         return view('guest.registration');
     }
-    public function addregist(Request $request) {
-        $data = new User();
-        $data->name     = $request['name'];
-        $data->username     = $request['username'];
-        $data->email    = $request['email'];
-        $data->address    = $request['address'];
-        $data->admin    = 'user';
-        $data->password = Hash::make($request['password']);
-        $data->password_real    = $request['password'];
-        $data->tempat_lahir    = $request['tempat'];
-        $data->tgl_lahir    = $request['tgl_lahir'];
+    public function addregist(Request $request)
+    {
+        if ($request['password'] == $request['conf-password']) {
+            $data = new User();
+            $data->name     = $request['name'];
+            $data->username     = $request['username'];
+            $data->email    = $request['email'];
+            $data->address    = $request['address'];
+            $data->admin    = 'user';
+            $data->password = Hash::make($request['password']);
+            $data->password_real    = $request['password'];
+            $data->no_tlp    = $request['telf'];
+            $data->tempat_lahir    = $request['tempat'];
+            $data->tgl_lahir    = $request['tgl_lahir'];
+            $data->save();
+            Alert()->success('Berhasil Mendaftar', 'Silahkan masukkan email dan Password');
+            return redirect()->route('login');
+        } else {
+            toast('Password Tidak Sesuai', 'error');
+            return redirect()->route('regist');
+        }
+    }
 
-        $data->save();
-        return redirect()->route('login');
+    // Pemberkasan Pendaftaran
+    public function activity()
+    {
+        $data = User::find(Auth::user()->id);
+        return view('admin.users.activity', compact('data'));
     }
 }

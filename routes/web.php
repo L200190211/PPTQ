@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\GaleryController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\PpshbController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/activity', [UserController::class, 'activity'])->name('activity');
 
     Route::get('/galery', [GaleryController::class, 'galery'])->name('galery');
+
+    Route::get('/ppshb', [PpshbController::class, 'ppshb'])->name('ppshb');
 
     Route::get('/team', [TeamController::class, 'team'])->name('team');
     Route::get('/team/add', [TeamController::class, 'add'])->name('addteam');

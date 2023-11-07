@@ -52,13 +52,24 @@
                                     </div>
                                     <div class="form-group col-md-6 col-12">
                                         <label>Phone</label>
-                                        <input type="tel" class="form-control" value="{{ $data->no_tlp }}" name="no_tlp">
+                                        <input type="tel" class="form-control" value="{{ $data->no_tlp }}" name="no_tlp" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-6">
+                                        <label for="tempat">Tempat</label>
+                                        <input id="tempat" type="text" class="form-control" name="tempat" value="{{ $data->tempat_lahir }}">
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label for="tgl_lahir">Tgl Lahir</label>
+                                        <input type="date" class="form-control datepicker" id="tgl_lahir" name="tgl_lahir" value="{{ $data->tgl_lahir }}">
+                                        <span style="color:red">*Bulan/Hari/Tahun</span>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6 col-12">
                                         <label>Address</label>
-                                        <textarea class="form-control" type="text" name="deskripsi" id="deskripsi" required style="height: 90px" required autofocus placeholder="Masukkan Alamat Lengkap" aria-describedby="basic-addon2">{{ $data->address }}</textarea>
+                                        <textarea class="form-control" type="text" name="deskripsi" id="deskripsi" required style="height: 90px" required placeholder="Masukkan Alamat Lengkap" aria-describedby="basic-addon2">{{ $data->address }}</textarea>
                                         <div class="invalid-feedback">
                                             Please fill in the first name
                                         </div>

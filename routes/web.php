@@ -8,6 +8,7 @@ use App\Http\Controllers\GaleryController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\PpshbController;
+use App\Models\Ppshb;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +30,8 @@ Route::get('/unit/mts', [GuestController::class, 'unitmts'])->name('unit/mts');
 Route::get('/unit/ma', [GuestController::class, 'unitma'])->name('unit/ma');
 Route::get('/divisi/tahfiz', [GuestController::class, 'tahfiz'])->name('divisi/tahfiz');
 Route::get('/divisi/santri', [GuestController::class, 'santri'])->name('divisi/santri');
-Route::get('/regist', [UserController::class, 'regist'])->name('regist');
-Route::post('/regist/addregist', [UserController::class, 'addregist'])->name('regist/addregist');
+Route::get('/regist', [PpshbController::class, 'regist'])->name('regist');
+Route::post('/regist/addregist', [PpshbController::class, 'addregist'])->name('regist/addregist');
 
 Auth::routes();
 
@@ -43,11 +44,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/user/edituser', [UserController::class, 'EditUser'])->name('user/edituser');
     Route::get('/user/reset', [UserController::class, 'reset'])->name('reset');
     Route::post('/user/resetpassword', [UserController::class, 'resetpassword'])->name('user/resetpassword');
-    Route::get('/activity', [UserController::class, 'activity'])->name('activity');
+
 
     Route::get('/galery', [GaleryController::class, 'galery'])->name('galery');
 
     Route::get('/ppshb', [PpshbController::class, 'ppshb'])->name('ppshb');
+    Route::get('/activity', [PpshbController::class, 'activity'])->name('activity');
+
 
     Route::get('/team', [TeamController::class, 'team'])->name('team');
     Route::get('/team/add', [TeamController::class, 'add'])->name('addteam');

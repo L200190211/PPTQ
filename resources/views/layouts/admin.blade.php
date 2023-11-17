@@ -89,9 +89,17 @@
                                 <i class="fas fa-fire"></i><span>Dashboard</span></a>
                         </li>
                         @if (\Auth::user()->admin == 'user')
-                        <li class="{{ request()->is('activity') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('activity') }}">
-                                <i class="fas fa-tasks"></i><span>Activity</span></a>
+                        <li class="dropdown {{ request()->is('activity*') ? 'active' : '' }}">
+                            <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i>
+                                <span>Activity</span></a>
+                            <ul class="dropdown-menu">
+                                <li class="{{ request()->is('activity') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('activity') }}">Main Data's</a>
+                                </li>
+                                <li class="{{ request()->is('user/reset') ? 'active' : '' }}">
+                                    <a class="nav-link" href="#">Complementary Data's</a>
+                                </li>
+                            </ul>
                         </li>
                         @endif
                         @if (\Auth::user()->admin == 'super_admin')

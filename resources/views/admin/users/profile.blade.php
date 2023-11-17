@@ -71,6 +71,10 @@
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6 col-12">
+                                        <label>NISN</label>
+                                        <input type="text" class="form-control" value="{{ $data->nisn }}" name="nisn" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');">
+                                    </div>
+                                    <div class="form-group col-md-6 col-12">
                                         <label>Address</label>
                                         <textarea class="form-control" type="text" name="deskripsi" id="deskripsi" required style="height: 90px" required placeholder="Masukkan Alamat Lengkap" aria-describedby="basic-addon2">{{ $data->address }}</textarea>
                                         <div class="invalid-feedback">

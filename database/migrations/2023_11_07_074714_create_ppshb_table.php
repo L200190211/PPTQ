@@ -17,7 +17,6 @@ class CreatePpshbTable extends Migration
             $table->increments('id_ppshb');
             $table->integer('id_users')->nullable();
             $table->string('pasphoto')->nullable();
-            $table->string('nisn')->nullable();
             $table->string('rapot')->nullable();
             $table->string('ijazah')->nullable();
             $table->string('akta')->nullable();

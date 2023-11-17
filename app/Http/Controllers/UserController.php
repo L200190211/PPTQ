@@ -55,38 +55,4 @@ class UserController extends Controller
         }
     }
 
-    // Daftar PPSHB
-    function regist()
-    {
-        return view('guest.registration');
-    }
-    public function addregist(Request $request)
-    {
-        if ($request['password'] == $request['conf-password']) {
-            $data = new User();
-            $data->name     = $request['name'];
-            $data->username     = $request['username'];
-            $data->email    = $request['email'];
-            $data->address    = $request['address'];
-            $data->admin    = 'user';
-            $data->password = Hash::make($request['password']);
-            $data->password_real    = $request['password'];
-            $data->no_tlp    = $request['telf'];
-            $data->tempat_lahir    = $request['tempat'];
-            $data->tgl_lahir    = $request['tgl_lahir'];
-            $data->save();
-            Alert()->success('Berhasil Mendaftar', 'Silahkan masukkan email dan Password');
-            return redirect()->route('login');
-        } else {
-            toast('Password Tidak Sesuai', 'error');
-            return redirect()->route('regist');
-        }
-    }
-
-    // Pemberkasan Pendaftaran
-    public function activity()
-    {
-        $data = User::find(Auth::user()->id);
-        return view('admin.users.activity', compact('data'));
-    }
 }

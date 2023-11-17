@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ppshb extends Model
 {
     use HasFactory;
-    protected $table = 'id_ppshb';
-    protected $primaryKey = 'id';
+    protected $table = 'ppshb';
+    protected $primaryKey = 'id_ppshb';
     protected $guarded = [];
 }

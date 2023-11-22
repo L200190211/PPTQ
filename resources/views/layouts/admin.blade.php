@@ -93,8 +93,8 @@
                             <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i>
                                 <span>Activity</span></a>
                             <ul class="dropdown-menu">
-                                <li class="{{ request()->is('activity') ? 'active' : '' }}">
-                                    <a class="nav-link" href="{{ route('activity') }}">Main Data's</a>
+                                <li class="{{ request()->is('main') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('main') }}">Main Data's</a>
                                 </li>
                                 <li class="{{ request()->is('user/reset') ? 'active' : '' }}">
                                     <a class="nav-link" href="#">Complementary Data's</a>

@@ -24,6 +24,7 @@ class UserController extends Controller
             $data->name     = $request['name'];
             $data->email    = $request['email'];
             $data->no_tlp   = $request['no_tlp'];
+            $data->asal_sekolah    = $request['asal_sekolah'];
             $data->tempat_lahir    = $request['tempat'];
             $data->tgl_lahir    = $request['tgl_lahir'];
             $data->save();
@@ -54,5 +55,4 @@ class UserController extends Controller
         } else {
         }
     }
-
 }

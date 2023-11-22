@@ -21,11 +21,6 @@
                             <form action="regist/addregist" id="addregist" method="POST" enctype="multipart/form-data" class="needs-validation">
                                 @csrf
 
-                                <div class="form-group">
-                                    <label>NISN</label>
-                                    <input type="text" class="form-control" name="nisn" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');">
-                                </div>
-
                                 <div class="row">
                                     <div class="form-group col-6">
                                         <label for="name">Full Name</label>
@@ -34,6 +29,17 @@
                                     <div class="form-group col-6">
                                         <label for="username">Username</label>
                                         <input id="username" type="text" class="form-control" name="username" autofocus>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-6">
+                                        <label>NISN</label>
+                                        <input type="text" class="form-control" name="nisn" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');">
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label for="name">Asal Sekolah</label>
+                                        <input id="asal_sekolah" type="text" class="form-control" name="asal_sekolah" autofocus>
                                     </div>
                                 </div>
 

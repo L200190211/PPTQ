@@ -30,6 +30,7 @@ class PpshbController extends Controller
             $data->name     = $request['name'];
             $data->username     = $request['username'];
             $data->email    = $request['email'];
+            $data->asal_sekolah    = $request['asal_sekolah'];
             $data->address    = $request['address'];
             $data->admin    = 'user';
             $data->password = Hash::make($request['password']);
@@ -50,10 +51,25 @@ class PpshbController extends Controller
     }
 
     // Pemberkasan Pendaftaran
-    public function activity()
+    public function main()
     {
         $data = Ppshb::where('id_users', Auth::user()->id)->get();
         // dd($data);
-        return view('admin.ppshb.activity', compact('data'));
+        return view('admin.ppshb.main', compact('data'));
+    }
+
+    function editmain(Request $request, $id)
+    {
+        $data = Ppshb::where('id_users', $id)->first();
+        // dd($data);
+        if ($request->has('pasphoto')) {
+            $image = $request->file('pasphoto');
+            $file_extension = $request->file('pasphoto')->getClientOriginalExtension();
+            $filename = Auth::user()->email . rand(100, 999) . '.' . $file_extension;;
+            $image->move('img/berkas/', $filename);
+            $data->pasphoto = $filename;
+        }
+        $data->save();
+        return redirect()->route('main');
     }
 }

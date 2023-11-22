@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('admin')->nullable();
             $table->string('no_tlp')->nullable();
             $table->text('address')->nullable();
+            $table->string('asal_sekolah')->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->date('tgl_lahir')->nullable();
             $table->rememberToken();

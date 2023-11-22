@@ -50,17 +50,23 @@ class TeamController extends Controller
         $data->phone    = $request['phone'];
 
         if ($request->has('sampul')) {
+            $FilePath = Team::select('sampul')->where('id', $id)->first();
+            $path = public_path() . "/img/sampul/" . $FilePath->sampul;
+            unlink($path);
             $image = $request->file('sampul');
-            $rand = Str::random(5);
-            $filename = $image->getClientOriginalName();
+            $file_extension = $request->file('sampul')->getClientOriginalExtension();
+            $filename = $request['name'] . rand(100, 999) . '.' . $file_extension;;
             $image->move('img/sampul/', $filename);
-            $data->sampul = $request->file('sampul')->getClientOriginalName();
+            $data->sampul = $filename;
         }
         $data->save();
         return redirect()->route('team');
     }
     public function delteam($id)
     {
+        $FilePath = Team::select('sampul')->where('id', $id)->first();
+        $path = public_path() . "/img/sampul/" . $FilePath->sampul;
+        unlink($path);
         $data = Team::find($id);
         $data->delete();
         return redirect()->route('team');

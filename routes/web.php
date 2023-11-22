@@ -49,7 +49,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/galery', [GaleryController::class, 'galery'])->name('galery');
 
     Route::get('/ppshb', [PpshbController::class, 'ppshb'])->name('ppshb');
-    Route::get('/activity', [PpshbController::class, 'activity'])->name('activity');
+    Route::get('activity/main', [PpshbController::class, 'main'])->name('main');
+    Route::post('/editmain/{id}', [PpshbController::class, 'editmain'])->name('editmain');
 
 
     Route::get('/team', [TeamController::class, 'team'])->name('team');

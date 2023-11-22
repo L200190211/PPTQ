@@ -19,10 +19,12 @@ class CreatePpshbTable extends Migration
             $table->string('pasphoto')->nullable();
             $table->string('rapot')->nullable();
             $table->string('ijazah')->nullable();
-            $table->string('akta')->nullable();
+            $table->string('skl')->nullable();
             $table->string('kk')->nullable();
+            $table->string('akta')->nullable();
             $table->string('kip')->nullable();
             $table->string('surat_sedia')->nullable();
+            $table->string('surat_absah')->nullable();
             $table->timestamps();
         });
     }

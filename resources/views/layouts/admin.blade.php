@@ -93,7 +93,7 @@
                             <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i>
                                 <span>Activity</span></a>
                             <ul class="dropdown-menu">
-                                <li class="{{ request()->is('main') ? 'active' : '' }}">
+                                <li class="{{ request()->is('activity/main') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('main') }}">Main Data's</a>
                                 </li>
                                 <li class="{{ request()->is('user/reset') ? 'active' : '' }}">

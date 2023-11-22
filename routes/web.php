@@ -50,8 +50,15 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/ppshb', [PpshbController::class, 'ppshb'])->name('ppshb');
     Route::get('activity/main', [PpshbController::class, 'main'])->name('main');
-    Route::post('/editmain/{id}', [PpshbController::class, 'editmain'])->name('editmain');
-
+    Route::post('/editphoto/{id}', [PpshbController::class, 'editphoto'])->name('editphoto');
+    Route::post('/editrapot/{id}', [PpshbController::class, 'editrapot'])->name('editrapot');
+    Route::post('/editijazah/{id}', [PpshbController::class, 'editijazah'])->name('editijazah');
+    Route::post('/editskl/{id}', [PpshbController::class, 'editskl'])->name('editskl');
+    Route::post('/editkk/{id}', [PpshbController::class, 'editkk'])->name('editkk');
+    Route::post('/editakta/{id}', [PpshbController::class, 'editakta'])->name('editakta');
+    Route::post('/editkip/{id}', [PpshbController::class, 'editkip'])->name('editkip');
+    Route::post('/editsurat_sedia/{id}', [PpshbController::class, 'editsurat_sedia'])->name('editsurat_sedia');
+    Route::post('/editsurat_absah/{id}', [PpshbController::class, 'editsurat_absah'])->name('editsurat_absah');
 
     Route::get('/team', [TeamController::class, 'team'])->name('team');
     Route::get('/team/add', [TeamController::class, 'add'])->name('addteam');

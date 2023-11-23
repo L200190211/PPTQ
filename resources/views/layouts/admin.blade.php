@@ -93,11 +93,11 @@
                             <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i>
                                 <span>Activity</span></a>
                             <ul class="dropdown-menu">
-                                <li class="{{ request()->is('activity/main') ? 'active' : '' }}">
+                                <li class="{{ request()->is('activity/main*') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('main') }}">Main Data's</a>
                                 </li>
-                                <li class="{{ request()->is('user/reset') ? 'active' : '' }}">
-                                    <a class="nav-link" href="#">Complementary Data's</a>
+                                <li class="{{ request()->is('activity/complementary*') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('complementary') }}">Complementary Data's</a>
                                 </li>
                             </ul>
                         </li>
@@ -177,11 +177,13 @@
 
     {{-- Datatables --}}
     {{-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> --}}
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <!-- <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script> -->
 
     @yield('scriptJS')
     @include('sweetalert::alert')
 </body>
 
 </html>
+
+<!-- Template Datatables -> https://datatables.net/examples/styling/bootstrap5.html -->

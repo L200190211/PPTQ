@@ -8,7 +8,8 @@ use App\Http\Controllers\GaleryController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\PpshbController;
-use App\Models\Ppshb;
+use App\Http\Controllers\CompPpshbController;
+use App\Models\CompPpshb;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +60,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/editkip/{id}', [PpshbController::class, 'editkip'])->name('editkip');
     Route::post('/editsurat_sedia/{id}', [PpshbController::class, 'editsurat_sedia'])->name('editsurat_sedia');
     Route::post('/editsurat_absah/{id}', [PpshbController::class, 'editsurat_absah'])->name('editsurat_absah');
+
+    Route::get('activity/complementary', [CompPpshbController::class, 'complementary'])->name('complementary');
+    Route::get('/activity/complementary/add', [CompPpshbController::class, 'add'])->name('addcomp');
+    Route::post('/addcompid', [CompPpshbController::class, 'addcompId'])->name('addcompId');
 
     Route::get('/team', [TeamController::class, 'team'])->name('team');
     Route::get('/team/add', [TeamController::class, 'add'])->name('addteam');

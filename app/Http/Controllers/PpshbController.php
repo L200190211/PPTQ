@@ -12,12 +12,16 @@ use Alert;
 
 class PpshbController extends Controller
 {
+    // SUPERADMIN
     public function ppshb()
     {
-        // $data = Team::orderBy('id', 'DESC')->paginate();
-        return view('admin.ppshb.index');
+        $data = Ppshb::orderBy('id_ppshb', 'DESC')->with('user')->get();
+        // dd($data);
+        return view('admin.ppshb.index', compact('data'));
     }
 
+
+    // SISWA
     // Daftar PPSHB
     function regist()
     {

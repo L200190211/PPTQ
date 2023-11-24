@@ -11,4 +11,9 @@ class Ppshb extends Model
     protected $table = 'ppshb';
     protected $primaryKey = 'id_ppshb';
     protected $guarded = [];
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'id_users');
+    }
 }

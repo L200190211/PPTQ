@@ -33,24 +33,31 @@
                                                 <th>No</th>
                                                 <th>Photo</th>
                                                 <th>Name</th>
-                                                <th>Title</th>
+                                                <th>School</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody class="galery">
                                             <?php $i = 1; ?>
-                                            {{-- @foreach ($data as $datas) --}}
+                                            @foreach ($data as $datas)
                                             <tr>
                                                 <th scope="row" style="width: 2%;">{{ $i++ }}</th>
-                                                <td style="width: 2%;">
-
+                                                <td>
+                                                    {{-- data null --}}
+                                                    @if (is_null($datas->pasphoto))
+                                                    <img src="{{ asset('img/sampul/team.jpg') }}" alt="" width="50px">
+                                                    {{-- data available --}}
+                                                    @elseif (File::exists(public_path('img/berkas/' . $datas->pasphoto)))
+                                                    <img src="/img/berkas/{{ $datas->pasphoto }}" alt="" width="50px">
+                                                    {{-- file not found --}}
+                                                    @else
+                                                    <img src="{{ asset('img/sampul/team.jpg') }}" alt="" width="50px">
+                                                    @endif
                                                 </td>
-                                                {{-- <td>
-                                                            <img src="{{ asset('assets2/img/avatar/avatar-1.png') }}"
-                                                alt="">
-                                                </td> --}}
-                                                <td>{{-- $datas->name --}}</td>
-                                                <td>{{-- $datas->title --}}</td>
+                                                <td>{{ $datas->user->name }}</td>
+                                                <td>
+                                                    {{ isset($datas->user->asal_sekolah) ? $datas->user->asal_sekolah : 'NULL'; }}
+                                                </td>
                                                 <td class="center-action">
                                                     <a href="/team/editteam/{{-- $datas->id --}}" class="btn btn-icon icon-left btn-warning">
                                                         <i class="far fa-eye"></i>View</a>
@@ -60,7 +67,7 @@
                                                         <i class="fas fa-times"></i> Delete</a>
                                                 </td>
                                             </tr>
-                                            {{-- @endforeach --}}
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

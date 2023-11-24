@@ -176,9 +176,8 @@
     <script src="{{ asset('assets2/js/custom.js') }}"></script>
 
     <!-- Datatables  -->
-    <script src="{{ asset('assets2/datatables/js/jquery.1.13.7.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets2/datatables/js/dataTables.1.13.7.bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('assets2/datatables/js/jquery-3.7.0.js') }}"></script>
+    <script src="{{ asset('assets2/datatables/js/jquery.1.13.6.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets2/datatables/js/dataTables.1.13.6.bootstrap5.min.js') }}"></script>
 
     @yield('scriptJS')
     @include('sweetalert::alert')

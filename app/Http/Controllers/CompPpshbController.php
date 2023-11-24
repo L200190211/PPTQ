@@ -40,4 +40,40 @@ class CompPpshbController extends Controller
         $data->save();
         return redirect()->route('complementary');
     }
+
+    public function edit($id_users, $id)
+    {
+        $data   = CompPpshb::find($id)->where('id_users', '=', $id_users)->first();
+        // dd($data);
+        return view('admin.ppshb.edit', compact('data'));
+    }
+    public function editcompId(Request $request, $id_users,  $id)
+    {
+        $data = CompPpshb::find($id)->where('id_users', '=', $id_users)->first();
+        $data->title   = $request['title'];
+        $data->desc   = $request['desc'];
+
+        if ($request->has('document')) {
+            $FilePath = CompPpshb::select('document')->find($id)->where('id_users', '=', $id_users)->first();
+            $path = public_path() . "/img/berkas/" . $FilePath->document;
+            unlink($path);
+            $image = $request->file('document');
+            $file_extension = $request->file('document')->getClientOriginalExtension();
+            $filename = 'comp-' . Auth::user()->id . rand(100, 999) . '.' . $file_extension;;
+            $image->move('img/berkas/', $filename);
+            $data->document = $filename;
+        }
+        $data->save();
+        return redirect()->route('complementary');
+    }
+
+    public function delcomp($id_users,  $id)
+    {
+        $FilePath = CompPpshb::select('document')->find($id)->where('id_users', '=', $id_users)->first();
+        $path = public_path() . "/img/berkas/" . $FilePath->document;
+        unlink($path);
+        $data = CompPpshb::find($id)->where('id_users', '=', $id_users)->first();
+        $data->delete();
+        return redirect()->route('complementary');
+    }
 }

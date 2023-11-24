@@ -58,9 +58,9 @@
                                             <td>{{ $truncated }}</td>
                                             <td class="center-action">
                                                 <a href="{{ asset('img/berkas/'. $datas->document ) }}" target="_BLANK" class="btn btn-lg btn-info">Preview</a>
-                                                <a href="{{-- /team/editteam/{{ $datas->id }} --}}" class="btn btn-icon btn-lg icon-left btn-primary">
+                                                <a href="/activity/complementary/edit/{{Auth()->user()->id}}/{{$datas->id_comp_ppshb}}" class="btn btn-icon btn-lg icon-left btn-primary">
                                                     <i class="far fa-edit"></i>Edit</a>
-                                                <a href="{{-- /delteam/{{ $datas->id }} --}}" class="btn btn-lg btn-danger">
+                                                <a href="/complementary/delcomp/{{Auth()->user()->id}}/{{$datas->id_comp_ppshb}}" class="btn btn-lg btn-danger">
                                                     <i class="fas fa-times"></i> Delete</a>
                                             </td>
                                         </tr>
@@ -77,10 +77,6 @@
 </div>
 @endsection
 @section('scriptJS')
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
-
 <script type="text/javascript">
     $(document).ready(function() {
         new DataTable('#example');

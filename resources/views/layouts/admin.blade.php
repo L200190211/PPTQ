@@ -17,9 +17,9 @@
     <link rel="stylesheet" href="{{ asset('assets2/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('assets2/css/components.css') }}">
 
-    {{-- Datatables --}}
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"> --}}
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <!--  Datatables  -->
+    <link rel="stylesheet" href="{{ asset('assets2/datatables/css/dataTables.1.13.6.bootstrap5.min.css') }}">
+
     <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <script>
@@ -175,10 +175,10 @@
     <script src="{{ asset('assets2/js/scripts.js') }}"></script>
     <script src="{{ asset('assets2/js/custom.js') }}"></script>
 
-    {{-- Datatables --}}
-    {{-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> --}}
-    <!-- <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> -->
-    <!-- <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script> -->
+    <!-- Datatables  -->
+    <script src="{{ asset('assets2/datatables/js/jquery.1.13.7.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets2/datatables/js/dataTables.1.13.7.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('assets2/datatables/js/jquery-3.7.0.js') }}"></script>
 
     @yield('scriptJS')
     @include('sweetalert::alert')

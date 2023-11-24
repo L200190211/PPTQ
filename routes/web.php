@@ -64,6 +64,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('activity/complementary', [CompPpshbController::class, 'complementary'])->name('complementary');
     Route::get('/activity/complementary/add', [CompPpshbController::class, 'add'])->name('addcomp');
     Route::post('/addcompid', [CompPpshbController::class, 'addcompId'])->name('addcompId');
+    Route::get('/activity/complementary/edit/{id_users}/{id}', [CompPpshbController::class, 'edit'])->name('editcomp');
+    Route::post('complementary/edit/{id_users}/{id}', [CompPpshbController::class, 'editcompId'])->name('editcompId');
+    Route::get('complementary/delcomp/{id_users}/{id}', [CompPpshbController::class, 'delcomp'])->name('delcomp');
 
     Route::get('/team', [TeamController::class, 'team'])->name('team');
     Route::get('/team/add', [TeamController::class, 'add'])->name('addteam');

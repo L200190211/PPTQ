@@ -16,10 +16,18 @@ class PpshbController extends Controller
     public function ppshb()
     {
         $data = Ppshb::orderBy('id_ppshb', 'DESC')->with('user')->get();
-        // dd($data);
+        // $get = Ppshb::select(DB::raw('*, SUM((Col1!="") + (Col2!="") + (Col3!="") + (Col4!="") + (Col5!="")) as NotEmptyFields'))
+        //     ->groupBy('ID')
+        //     ->get();
         return view('admin.ppshb.index', compact('data'));
     }
 
+    public function view($id)
+    {
+        $data = Ppshb::with('user', 'comp_ppshb')->get();
+        // dd($data);
+        return view('admin.ppshb.view', compact('data'));
+    }
 
     // SISWA
     // Daftar PPSHB

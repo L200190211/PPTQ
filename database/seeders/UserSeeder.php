@@ -49,6 +49,22 @@ class UserSeeder extends Seeder
                 'tgl_lahir' => date("Y-m-d H:i:s"),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
+            ],
+            [
+                'username' => 'Sigit Nugroho',
+                'name' => 'Sigit Nugroho',
+                'email' => 'sigit12@gmail.com',
+                'password' => bcrypt('sigit12'),
+                'password_real' => 'sigit12',
+                'nisn' => '338901299827626',
+                'admin' => 'user',
+                'no_tlp' => '085804511463',
+                'address' => 'Pati, Indonesia',
+                'asal_sekolah' => 'SD Negeri 2 Dummy',
+                'tempat_lahir' => 'Semarang',
+                'tgl_lahir' => date("Y-m-d H:i:s"),
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
             ]
         ];
         DB::table('users')->insert($users);

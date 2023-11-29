@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/galery', [GaleryController::class, 'galery'])->name('galery');
 
     Route::get('/ppshb', [PpshbController::class, 'ppshb'])->name('ppshb');
+    Route::get('/ppshb/view/{id}', [PpshbController::class, 'view'])->name('view');
     Route::get('activity/main', [PpshbController::class, 'main'])->name('main');
     Route::post('/editphoto/{id}', [PpshbController::class, 'editphoto'])->name('editphoto');
     Route::post('/editrapot/{id}', [PpshbController::class, 'editrapot'])->name('editrapot');

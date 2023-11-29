@@ -59,7 +59,7 @@
                                                     {{ isset($datas->user->asal_sekolah) ? $datas->user->asal_sekolah : 'NULL'; }}
                                                 </td>
                                                 <td class="center-action">
-                                                    <a href="/team/editteam/{{-- $datas->id --}}" class="btn btn-icon icon-left btn-warning">
+                                                    <a href="/ppshb/view/{{ Auth::user()->id }}" class="btn btn-icon icon-left btn-warning">
                                                         <i class="far fa-eye"></i>View</a>
                                                     <a href="/team/editteam/{{-- $datas->id --}}" class="btn btn-icon icon-left btn-primary">
                                                         <i class="far fa-edit"></i>Edit</a>

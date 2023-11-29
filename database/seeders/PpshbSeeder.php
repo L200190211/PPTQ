@@ -20,7 +20,10 @@ class PpshbSeeder extends Seeder
         $ppshb = [
             [
                 'id_users' => '2',
-            ]
+            ],
+            [
+                'id_users' => '3',
+            ],
         ];
         DB::table('ppshb')->insert($ppshb);
     }

@@ -16,4 +16,8 @@ class Ppshb extends Model
     {
         return $this->hasOne(User::class, 'id', 'id_users');
     }
+    public function comp_ppshb()
+    {
+        return $this->hasMany(CompPpshb::class, 'id_users', 'id_users');
+    }
 }

@@ -24,7 +24,7 @@ class PpshbController extends Controller
 
     public function view($id)
     {
-        $data = Ppshb::with('user', 'comp_ppshb')->get();
+        $data = Ppshb::where('id_users', $id)->with('user', 'comp_ppshb')->get();
         // dd($data);
         return view('admin.ppshb.view', compact('data'));
     }

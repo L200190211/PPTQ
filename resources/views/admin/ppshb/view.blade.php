@@ -5,6 +5,25 @@
             display: flex;
             gap: 1rem;
         }
+
+        .sampul {
+            width: 125px;
+            height: 125px;
+            position: relative;
+            border-radius: 100%;
+            border: none;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+            margin: -35px -5px 0 30px;
+        }
+
+        div#prev {
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
     </style>
 @endsection
 @section('content')
@@ -20,18 +39,33 @@
             </div>
             <div class="section-body">
 
-                <div class="row mt-sm-4">
-                    <div class="col-12 col-md-12 col-lg-12">
-                        <div class="card profile-widget">
-                            <div class="profile-widget-header">
-                                <img alt="image" src="{{ asset('assets2/img/avatar/avatar-1.png') }}"
-                                    class="rounded-circle profile-widget-picture">
-                            </div>
-                            <!-- Profile Students -->
-                            <div class="card-header">
-                                <h4>Profile Student</h4>
-                            </div>
-                            @foreach ($data as $datas)
+                @foreach ($data as $datas)
+                    <div class="row mt-sm-4">
+                        <div class="col-12 col-md-12 col-lg-12">
+                            <div class="card profile-widget">
+                                <div class="profile-widget-header">
+                                    @if (is_null($datas->pasphoto))
+                                        <div class="sampul">
+                                            <div id="prev" style="background-image: url(/img/dummy/ppshb.png);">
+                                            </div>
+                                        </div>
+                                    @elseif (File::exists(public_path('img/berkas/' . $datas->pasphoto)))
+                                        <div class="sampul">
+                                            <div id="prev"
+                                                style="background-image: url(/img/berkas/{{ $datas->pasphoto }})">
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="sampul">
+                                            <div id="prev" style="background-image: url(/img/dummy/ppshb.png);">
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
+                                <!-- Profile Students -->
+                                <div class="card-header">
+                                    <h4>Profile Student</h4>
+                                </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="form-group col-md-6 col-12">
@@ -94,291 +128,282 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
-                            <!-- Main Documents -->
-                            <div class="card-header">
-                                <h4>Main Document's</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-md" id="example">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Document</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php $i = 1; ?>
-                                            @foreach ($data as $datas)
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Pas Photo</td>
-                                                    <td>
-                                                        @if ($datas->pasphoto == null)
-                                                            <div class="badge badge-danger"><i class="fas fa-times"></i>
-                                                            </div>
-                                                        @else
-                                                            <div class="badge badge-success"><i class="fas fa-check"></i>
-                                                            </div>
-                                                        @endif
-                                                    </td>
-                                                    <td class="act">
-                                                        @if ($datas->pasphoto == null)
-                                                            <a href="{{ asset('img/berkas/' . $datas->pasphoto) }}"
-                                                                target="_BLANK"
-                                                                class="btn btn-lg btn-info disabled">Preview</a>
-                                                        @else
-                                                            <a href="{{ asset('img/berkas/' . $datas->pasphoto) }}"
-                                                                target="_BLANK" class="btn btn-lg btn-info">Preview</a>
-                                                        @endif
-                                                    </td>
-                                                </tr>
+                @endforeach
+                <!-- Main Documents -->
+                <div class="card-header">
+                    <h4>Main Document's</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-md" id="example">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Document</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i = 1; ?>
+                                @foreach ($data as $datas)
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Pas Photo</td>
+                                        <td>
+                                            @if ($datas->pasphoto == null)
+                                                <div class="badge badge-danger"><i class="fas fa-times"></i>
+                                                </div>
+                                            @else
+                                                <div class="badge badge-success"><i class="fas fa-check"></i>
+                                                </div>
+                                            @endif
+                                        </td>
+                                        <td class="act">
+                                            @if ($datas->pasphoto == null)
+                                                <a href="{{ asset('img/berkas/' . $datas->pasphoto) }}" target="_BLANK"
+                                                    class="btn btn-lg btn-info disabled">Preview</a>
+                                            @else
+                                                <a href="{{ asset('img/berkas/' . $datas->pasphoto) }}" target="_BLANK"
+                                                    class="btn btn-lg btn-info">Preview</a>
+                                            @endif
+                                        </td>
+                                    </tr>
 
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Rapot</td>
-                                                    <td>
-                                                        @if ($datas->rapot == null)
-                                                            <div class="badge badge-danger"><i class="fas fa-times"></i>
-                                                            </div>
-                                                        @else
-                                                            <div class="badge badge-success"><i class="fas fa-check"></i>
-                                                            </div>
-                                                        @endif
-                                                    </td>
-                                                    <td class="act">
-                                                        @if ($datas->rapot == null)
-                                                            <a href="{{ asset('img/berkas/' . $datas->rapot) }}"
-                                                                target="_BLANK"
-                                                                class="btn btn-lg btn-info disabled">Preview</a>
-                                                        @else
-                                                            <a href="{{ asset('img/berkas/' . $datas->rapot) }}"
-                                                                target="_BLANK" class="btn btn-lg btn-info">Preview</a>
-                                                        @endif
-                                                    </td>
-                                                </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Rapot</td>
+                                        <td>
+                                            @if ($datas->rapot == null)
+                                                <div class="badge badge-danger"><i class="fas fa-times"></i>
+                                                </div>
+                                            @else
+                                                <div class="badge badge-success"><i class="fas fa-check"></i>
+                                                </div>
+                                            @endif
+                                        </td>
+                                        <td class="act">
+                                            @if ($datas->rapot == null)
+                                                <a href="{{ asset('img/berkas/' . $datas->rapot) }}" target="_BLANK"
+                                                    class="btn btn-lg btn-info disabled">Preview</a>
+                                            @else
+                                                <a href="{{ asset('img/berkas/' . $datas->rapot) }}" target="_BLANK"
+                                                    class="btn btn-lg btn-info">Preview</a>
+                                            @endif
+                                        </td>
+                                    </tr>
 
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>Ijazah</td>
-                                                    <td>
-                                                        @if ($datas->ijazah == null)
-                                                            <div class="badge badge-danger"><i class="fas fa-times"></i>
-                                                            </div>
-                                                        @else
-                                                            <div class="badge badge-success"><i class="fas fa-check"></i>
-                                                            </div>
-                                                        @endif
-                                                    </td>
-                                                    <td class="act">
-                                                        @if ($datas->ijazah == null)
-                                                            <a href="{{ asset('img/berkas/' . $datas->ijazah) }}"
-                                                                target="_BLANK"
-                                                                class="btn btn-lg btn-info disabled">Preview</a>
-                                                        @else
-                                                            <a href="{{ asset('img/berkas/' . $datas->ijazah) }}"
-                                                                target="_BLANK" class="btn btn-lg btn-info">Preview</a>
-                                                        @endif
-                                                    </td>
-                                                </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Ijazah</td>
+                                        <td>
+                                            @if ($datas->ijazah == null)
+                                                <div class="badge badge-danger"><i class="fas fa-times"></i>
+                                                </div>
+                                            @else
+                                                <div class="badge badge-success"><i class="fas fa-check"></i>
+                                                </div>
+                                            @endif
+                                        </td>
+                                        <td class="act">
+                                            @if ($datas->ijazah == null)
+                                                <a href="{{ asset('img/berkas/' . $datas->ijazah) }}" target="_BLANK"
+                                                    class="btn btn-lg btn-info disabled">Preview</a>
+                                            @else
+                                                <a href="{{ asset('img/berkas/' . $datas->ijazah) }}" target="_BLANK"
+                                                    class="btn btn-lg btn-info">Preview</a>
+                                            @endif
+                                        </td>
+                                    </tr>
 
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>SKL</td>
-                                                    <td>
-                                                        @if ($datas->skl == null)
-                                                            <div class="badge badge-danger"><i class="fas fa-times"></i>
-                                                            </div>
-                                                        @else
-                                                            <div class="badge badge-success"><i class="fas fa-check"></i>
-                                                            </div>
-                                                        @endif
-                                                    </td>
-                                                    <td class="act">
-                                                        @if ($datas->skl == null)
-                                                            <a href="{{ asset('img/berkas/' . $datas->skl) }}"
-                                                                target="_BLANK"
-                                                                class="btn btn-lg btn-info disabled">Preview</a>
-                                                        @else
-                                                            <a href="{{ asset('img/berkas/' . $datas->skl) }}"
-                                                                target="_BLANK" class="btn btn-lg btn-info">Preview</a>
-                                                        @endif
-                                                    </td>
-                                                </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>SKL</td>
+                                        <td>
+                                            @if ($datas->skl == null)
+                                                <div class="badge badge-danger"><i class="fas fa-times"></i>
+                                                </div>
+                                            @else
+                                                <div class="badge badge-success"><i class="fas fa-check"></i>
+                                                </div>
+                                            @endif
+                                        </td>
+                                        <td class="act">
+                                            @if ($datas->skl == null)
+                                                <a href="{{ asset('img/berkas/' . $datas->skl) }}" target="_BLANK"
+                                                    class="btn btn-lg btn-info disabled">Preview</a>
+                                            @else
+                                                <a href="{{ asset('img/berkas/' . $datas->skl) }}" target="_BLANK"
+                                                    class="btn btn-lg btn-info">Preview</a>
+                                            @endif
+                                        </td>
+                                    </tr>
 
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td>Kartu Keluarga</td>
-                                                    <td>
-                                                        @if ($datas->kk == null)
-                                                            <div class="badge badge-danger"><i class="fas fa-times"></i>
-                                                            </div>
-                                                        @else
-                                                            <div class="badge badge-success"><i class="fas fa-check"></i>
-                                                            </div>
-                                                        @endif
-                                                    </td>
-                                                    <td class="act">
-                                                        @if ($datas->kk == null)
-                                                            <a href="{{ asset('img/berkas/' . $datas->kk) }}"
-                                                                target="_BLANK"
-                                                                class="btn btn-lg btn-info disabled">Preview</a>
-                                                        @else
-                                                            <a href="{{ asset('img/berkas/' . $datas->kk) }}"
-                                                                target="_BLANK" class="btn btn-lg btn-info">Preview</a>
-                                                        @endif
-                                                    </td>
-                                                </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Kartu Keluarga</td>
+                                        <td>
+                                            @if ($datas->kk == null)
+                                                <div class="badge badge-danger"><i class="fas fa-times"></i>
+                                                </div>
+                                            @else
+                                                <div class="badge badge-success"><i class="fas fa-check"></i>
+                                                </div>
+                                            @endif
+                                        </td>
+                                        <td class="act">
+                                            @if ($datas->kk == null)
+                                                <a href="{{ asset('img/berkas/' . $datas->kk) }}" target="_BLANK"
+                                                    class="btn btn-lg btn-info disabled">Preview</a>
+                                            @else
+                                                <a href="{{ asset('img/berkas/' . $datas->kk) }}" target="_BLANK"
+                                                    class="btn btn-lg btn-info">Preview</a>
+                                            @endif
+                                        </td>
+                                    </tr>
 
-                                                <tr>
-                                                    <td>6</td>
-                                                    <td>Akta Kelahiran</td>
-                                                    <td>
-                                                        @if ($datas->akta == null)
-                                                            <div class="badge badge-danger"><i class="fas fa-times"></i>
-                                                            </div>
-                                                        @else
-                                                            <div class="badge badge-success"><i class="fas fa-check"></i>
-                                                            </div>
-                                                        @endif
-                                                    </td>
-                                                    <td class="act">
-                                                        @if ($datas->akta == null)
-                                                            <a href="{{ asset('img/berkas/' . $datas->akta) }}"
-                                                                target="_BLANK"
-                                                                class="btn btn-lg btn-info disabled">Preview</a>
-                                                        @else
-                                                            <a href="{{ asset('img/berkas/' . $datas->akta) }}"
-                                                                target="_BLANK" class="btn btn-lg btn-info">Preview</a>
-                                                        @endif
-                                                    </td>
-                                                </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Akta Kelahiran</td>
+                                        <td>
+                                            @if ($datas->akta == null)
+                                                <div class="badge badge-danger"><i class="fas fa-times"></i>
+                                                </div>
+                                            @else
+                                                <div class="badge badge-success"><i class="fas fa-check"></i>
+                                                </div>
+                                            @endif
+                                        </td>
+                                        <td class="act">
+                                            @if ($datas->akta == null)
+                                                <a href="{{ asset('img/berkas/' . $datas->akta) }}" target="_BLANK"
+                                                    class="btn btn-lg btn-info disabled">Preview</a>
+                                            @else
+                                                <a href="{{ asset('img/berkas/' . $datas->akta) }}" target="_BLANK"
+                                                    class="btn btn-lg btn-info">Preview</a>
+                                            @endif
+                                        </td>
+                                    </tr>
 
-                                                <tr>
-                                                    <td>7</td>
-                                                    <td>KIP (Opsional)</td>
-                                                    <td>
-                                                        @if ($datas->kip == null)
-                                                            <div class="badge badge-danger"><i class="fas fa-times"></i>
-                                                            </div>
-                                                        @else
-                                                            <div class="badge badge-success"><i class="fas fa-check"></i>
-                                                            </div>
-                                                        @endif
-                                                    </td>
-                                                    <td class="act">
-                                                        @if ($datas->kip == null)
-                                                            <a href="{{ asset('img/berkas/' . $datas->kip) }}"
-                                                                target="_BLANK"
-                                                                class="btn btn-lg btn-info disabled">Preview</a>
-                                                        @else
-                                                            <a href="{{ asset('img/berkas/' . $datas->kip) }}"
-                                                                target="_BLANK" class="btn btn-lg btn-info">Preview</a>
-                                                        @endif
-                                                    </td>
-                                                </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>KIP (Opsional)</td>
+                                        <td>
+                                            @if ($datas->kip == null)
+                                                <div class="badge badge-danger"><i class="fas fa-times"></i>
+                                                </div>
+                                            @else
+                                                <div class="badge badge-success"><i class="fas fa-check"></i>
+                                                </div>
+                                            @endif
+                                        </td>
+                                        <td class="act">
+                                            @if ($datas->kip == null)
+                                                <a href="{{ asset('img/berkas/' . $datas->kip) }}" target="_BLANK"
+                                                    class="btn btn-lg btn-info disabled">Preview</a>
+                                            @else
+                                                <a href="{{ asset('img/berkas/' . $datas->kip) }}" target="_BLANK"
+                                                    class="btn btn-lg btn-info">Preview</a>
+                                            @endif
+                                        </td>
+                                    </tr>
 
-                                                <tr>
-                                                    <td>8</td>
-                                                    <td>Surat Ketersediaan
-                                                        <a href="#" class="btn btn-sm btn-primary">Download</a>
-                                                    </td>
-                                                    <td>
-                                                        @if ($datas->surat_sedia == null)
-                                                            <div class="badge badge-danger"><i class="fas fa-times"></i>
-                                                            </div>
-                                                        @else
-                                                            <div class="badge badge-success"><i class="fas fa-check"></i>
-                                                            </div>
-                                                        @endif
-                                                    </td>
-                                                    <td class="act">
-                                                        @if ($datas->surat_sedia == null)
-                                                            <a href="{{ asset('img/berkas/' . $datas->surat_sedia) }}"
-                                                                target="_BLANK"
-                                                                class="btn btn-lg btn-info disabled">Preview</a>
-                                                        @else
-                                                            <a href="{{ asset('img/berkas/' . $datas->surat_sedia) }}"
-                                                                target="_BLANK" class="btn btn-lg btn-info">Preview</a>
-                                                        @endif
-                                                    </td>
-                                                </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Surat Ketersediaan
+                                            <a href="#" class="btn btn-sm btn-primary">Download</a>
+                                        </td>
+                                        <td>
+                                            @if ($datas->surat_sedia == null)
+                                                <div class="badge badge-danger"><i class="fas fa-times"></i>
+                                                </div>
+                                            @else
+                                                <div class="badge badge-success"><i class="fas fa-check"></i>
+                                                </div>
+                                            @endif
+                                        </td>
+                                        <td class="act">
+                                            @if ($datas->surat_sedia == null)
+                                                <a href="{{ asset('img/berkas/' . $datas->surat_sedia) }}"
+                                                    target="_BLANK" class="btn btn-lg btn-info disabled">Preview</a>
+                                            @else
+                                                <a href="{{ asset('img/berkas/' . $datas->surat_sedia) }}"
+                                                    target="_BLANK" class="btn btn-lg btn-info">Preview</a>
+                                            @endif
+                                        </td>
+                                    </tr>
 
-                                                <tr>
-                                                    <td>9</td>
-                                                    <td>Surat Keabsahan Berkas
-                                                        <a href="#" class="btn btn-sm btn-primary">Download</a>
-                                                    </td>
-                                                    <td>
-                                                        @if ($datas->surat_absah == null)
-                                                            <div class="badge badge-danger"><i class="fas fa-times"></i>
-                                                            </div>
-                                                        @else
-                                                            <div class="badge badge-success"><i class="fas fa-check"></i>
-                                                            </div>
-                                                        @endif
-                                                    </td>
-                                                    <td class="act">
-                                                        @if ($datas->surat_absah == null)
-                                                            <a href="{{ asset('img/berkas/' . $datas->surat_absah) }}"
-                                                                target="_BLANK"
-                                                                class="btn btn-lg btn-info disabled">Preview</a>
-                                                        @else
-                                                            <a href="{{ asset('img/berkas/' . $datas->surat_absah) }}"
-                                                                target="_BLANK" class="btn btn-lg btn-info">Preview</a>
-                                                        @endif
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <!-- Complementary Documents -->
-                            <div class="card-header">
-                                <h4>Complementary Document</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-md" id="example2">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Title</th>
-                                                <th>Desc</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php $i = 1; ?>
-                                            @foreach ($data as $datas)
-                                                @foreach ($datas->comp_ppshb as $comp)
-                                                    <tr>
-                                                        <th scope="row" style="width: 2%;">{{ $i++ }}</th>
-                                                        <td>{{ $comp->title }}</td>
-                                                        <?php
-                                                        $truncated = Str::of($comp->desc)->limit(30);
-                                                        ?>
-                                                        <td>{{ $truncated }}</td>
-                                                        <td class="center-action">
-                                                            <a href="{{ asset('img/berkas/' . $comp->document) }}"
-                                                                target="_BLANK" class="btn btn-lg btn-info">Preview</a>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>Surat Keabsahan Berkas
+                                            <a href="#" class="btn btn-sm btn-primary">Download</a>
+                                        </td>
+                                        <td>
+                                            @if ($datas->surat_absah == null)
+                                                <div class="badge badge-danger"><i class="fas fa-times"></i>
+                                                </div>
+                                            @else
+                                                <div class="badge badge-success"><i class="fas fa-check"></i>
+                                                </div>
+                                            @endif
+                                        </td>
+                                        <td class="act">
+                                            @if ($datas->surat_absah == null)
+                                                <a href="{{ asset('img/berkas/' . $datas->surat_absah) }}"
+                                                    target="_BLANK" class="btn btn-lg btn-info disabled">Preview</a>
+                                            @else
+                                                <a href="{{ asset('img/berkas/' . $datas->surat_absah) }}"
+                                                    target="_BLANK" class="btn btn-lg btn-info">Preview</a>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- Complementary Documents -->
+                <div class="card-header">
+                    <h4>Complementary Document</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-md" id="example2">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Title</th>
+                                    <th>Desc</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i = 1; ?>
+                                @foreach ($data as $datas)
+                                    @foreach ($datas->comp_ppshb as $comp)
+                                        <tr>
+                                            <th scope="row" style="width: 2%;">{{ $i++ }}</th>
+                                            <td>{{ $comp->title }}</td>
+                                            <?php
+                                            $truncated = Str::of($comp->desc)->limit(30);
+                                            ?>
+                                            <td>{{ $truncated }}</td>
+                                            <td class="center-action">
+                                                <a href="{{ asset('img/berkas/' . $comp->document) }}" target="_BLANK"
+                                                    class="btn btn-lg btn-info">Preview</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-        </section>
+    </div>
+    </div>
+    </div>
+    </section>
     </div>
 @endsection
 @section('scriptJS')

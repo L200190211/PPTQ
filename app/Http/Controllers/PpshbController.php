@@ -16,9 +16,6 @@ class PpshbController extends Controller
     public function ppshb()
     {
         $data = Ppshb::orderBy('id_ppshb', 'DESC')->with('user')->get();
-        // $get = Ppshb::select(DB::raw('*, SUM((Col1!="") + (Col2!="") + (Col3!="") + (Col4!="") + (Col5!="")) as NotEmptyFields'))
-        //     ->groupBy('ID')
-        //     ->get();
         return view('admin.ppshb.index', compact('data'));
     }
 

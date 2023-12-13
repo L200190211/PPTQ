@@ -11,7 +11,7 @@
                 <div class="carousel-inner" role="listbox">
 
                     <!-- Slide 1 -->
-                    <div class="carousel-item active" style="background-image: url(assets/img/slide/slide-1.jpg);">
+                    <div class="carousel-item active" style="background-image: url(img/guest/slide-1.jpg);">
                         <div class="carousel-container">
                             <div class="carousel-content">
                                 <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Shuffle</span></h2>
@@ -26,7 +26,7 @@
                     </div>
 
                     <!-- Slide 2 -->
-                    <div class="carousel-item" style="background-image: url(assets/img/slide/slide-2.jpg);">
+                    <div class="carousel-item" style="background-image: url(img/guest/slide-2.jpg);">
                         <div class="carousel-container">
                             <div class="carousel-content">
                                 <h2 class="animate__animated animate__fadeInDown">Lorem Ipsum Dolor</h2>
@@ -41,7 +41,7 @@
                     </div>
 
                     <!-- Slide 3 -->
-                    <div class="carousel-item" style="background-image: url(assets/img/slide/slide-3.jpg);">
+                    <div class="carousel-item" style="background-image: url(img/guest/slide-3.jpg);">
                         <div class="carousel-container">
                             <div class="carousel-content">
                                 <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
@@ -201,81 +201,39 @@
                 </div>
 
                 <div class="row">
-
-                    <div class="col-xl-3 col-lg-4 col-md-6">
-                        <div class="member">
-                            <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4>Walter White</h4>
-                                    <span>Chief Executive Officer</span>
+                    <?php $i = 1; ?>
+                    @foreach ($team as $teams)
+                        <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.{{ $i++ }}s">
+                            <div class="member">
+                                <div class="cover-team">
+                                    {{-- data null --}}
+                                    @if (is_null($teams->sampul))
+                                        <img src="{{ asset('img/sampul/team.jpg') }}" alt="" width="50px">
+                                        {{-- data available --}}
+                                    @elseif (File::exists(public_path('img/sampul/' . $teams->sampul)))
+                                        <img src="/img/sampul/{{ $teams->sampul }}" alt="" width="50px">
+                                        {{-- file not found --}}
+                                    @else
+                                        <img src="{{ asset('img/sampul/team.jpg') }}" alt="" width="50px">
+                                    @endif
                                 </div>
-                                <div class="social">
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.1s">
-                        <div class="member">
-                            <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4>Sarah Jhonson</h4>
-                                    <span>Product Manager</span>
-                                </div>
-                                <div class="social">
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                                <div class="member-info">
+                                    <div class="member-info-content">
+                                        <h4>{{ $teams->name }}</h4>
+                                        <span>{{ $teams->title }}</span>
+                                    </div>
+                                    <div class="social">
+                                        <a href="mailto:{{ $teams->email }}"><i class="bi bi-envelope"></i></a>
+                                        <a href="tel:{{ $teams->phone }}"><i class="bi bi-phone"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s">
-                        <div class="member">
-                            <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4>William Anderson</h4>
-                                    <span>CTO</span>
-                                </div>
-                                <div class="social">
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
-                        <div class="member">
-                            <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4>Amanda Jepson</h4>
-                                    <span>Accountant</span>
-                                </div>
-                                <div class="social">
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    @endforeach
                 </div>
-
+                <div class="btn-center">
+                    <a class="cta-btn" href="#">Call To Action</a>
+                </div>
             </div>
         </section><!-- End Our Team Section -->
 

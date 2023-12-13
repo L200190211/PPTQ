@@ -17,7 +17,7 @@
 
                 <div class="row pt-4">
                     <div class="col-lg-6">
-                        <img src="assets/img/about.jpg" class="img-fluid" alt="">
+                        <img src="img/guest/profile.jpg" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 content">
                         <h4>Visi</h4>

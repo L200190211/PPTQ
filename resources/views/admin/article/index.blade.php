@@ -23,7 +23,7 @@
                                 <div class="card">
                                     <div class="card-header space">
                                         <h4>Article</h4>
-                                        <a href="#" class="btn btn-icon icon-left btn-primary">
+                                        <a href="{{ route('addarticle') }}" class="btn btn-icon icon-left btn-primary">
                                             <i class="far fa-edit"></i>Add</a>
                                     </div>
                                     <div class="card-body">

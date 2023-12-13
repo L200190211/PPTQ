@@ -29,7 +29,7 @@ class TeamController extends Controller
         if ($request->has('sampul')) {
             $image = $request->file('sampul');
             $file_extension = $request->file('sampul')->getClientOriginalExtension();
-            $filename = $request['name'] . rand(100, 999) . '.' . $file_extension;;
+            $filename = rand(1, 20) . '-' . rand(100, 999) . '.' . $file_extension;;
             $image->move('img/sampul/', $filename);
             $data->sampul = $filename;
         }
@@ -49,18 +49,40 @@ class TeamController extends Controller
         $data->email       = $request['email'];
         $data->phone    = $request['phone'];
 
-        if ($request->has('sampul')) {
-            $FilePath = Team::select('sampul')->where('id', $id)->first();
-            $path = public_path() . "/img/sampul/" . $FilePath->sampul;
-            unlink($path);
-            $image = $request->file('sampul');
-            $file_extension = $request->file('sampul')->getClientOriginalExtension();
-            $filename = $request['name'] . rand(100, 999) . '.' . $file_extension;;
-            $image->move('img/sampul/', $filename);
-            $data->sampul = $filename;
-        }
-        $data->save();
-        return redirect()->route('team');
+        if ($request->has('sampul'))
+            //  if data not null ->for edit
+            if (isset($data->sampul)) {
+                $path = public_path() . "/img/sampul/" . $data->sampul;
+                if (file_exists($path)) {
+                    $FilePath = Team::select('sampul')->where('id', $id)->first();
+                    $path = public_path() . "/img/sampul/" . $FilePath->sampul;
+                    unlink($path);
+                    $image = $request->file('sampul');
+                    $file_extension = $request->file('sampul')->getClientOriginalExtension();
+                    $filename = rand(1, 20) . '-'  . rand(100, 999) . '.' . $file_extension;
+                    $image->move('img/sampul/', $filename);
+                    $data->sampul = $filename;
+                    $data->save();
+                    return redirect()->route('team');
+                } else {
+                    $image = $request->file('sampul');
+                    $file_extension = $request->file('sampul')->getClientOriginalExtension();
+                    $filename = rand(1, 20) . '-'  . rand(100, 999) . '.' . $file_extension;;
+                    $image->move('img/sampul/', $filename);
+                    $data->sampul = $filename;
+                    $data->save();
+                    return redirect()->route('team');
+                }
+            } else {
+                // if data null ->for add new
+                $image = $request->file('sampul');
+                $file_extension = $request->file('sampul')->getClientOriginalExtension();
+                $filename = rand(1, 20) . '-'  . rand(100, 999) . '.' . $file_extension;;
+                $image->move('img/sampul/', $filename);
+                $data->sampul = $filename;
+                $data->save();
+                return redirect()->route('team');
+            }
     }
     public function delteam($id)
     {

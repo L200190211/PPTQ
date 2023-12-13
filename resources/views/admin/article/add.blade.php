@@ -87,64 +87,43 @@
                     Change information about yourself on this page.
                 </p>
 
-                <div class="row">
-                    <div class="col-12 col-md-12 col-lg-12">
-                        <div class="card profile-widget">
-                            <div class="card-header">
-                                <h4>Add Team</h4>
-                            </div>
-                            <form action="user/edituser" id="editprofile" method="POST" enctype="multipart/form-data"
-                                class="needs-validation">
-                                @csrf
-                                    <div class="avatar-upload">
-                                        <div class="avatar-edit">
-                                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
-                                            <label for="imageUpload"></label>
-                                        </div>
-                                        <div class="avatar-preview">
-                                            <div id="imagePreview"
-                                                style="background-image: url(http://i.pravatar.cc/500?img=7);">
-                                            </div>
-                                        </div>
-                                    </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="form-group col-md-6 col-12">
-                                            <label>Name</label>
-                                            <input type="text" class="form-control" required="" name="username">
-                                            <div class="invalid-feedback">
-                                                Please fill in the first name
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-6 col-12">
-                                            <label>Title</label>
-                                            <input type="text" class="form-control" required="" name="name">
-                                            <div class="invalid-feedback">
-                                                Please fill in the last name
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-6 col-12">
-                                            <label>Email</label>
-                                            <input type="email" class="form-control" required="" name="email">
-                                            <div class="invalid-feedback">
-                                                Please fill in the email
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-6 col-12">
-                                            <label>Phone</label>
-                                            <input type="tel" class="form-control" name="no_tlp">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer text-right">
-                                    <button class="btn btn-primary">Submit</button>
-                                </div>
-                            </form>
+                <div class="col-12">
+                    <div class="card">
+                      <div class="card-header">
+                        <h4>Simple Summernote</h4>
+                      </div>
+                      <div class="card-body">
+                        <div class="form-group row mb-4">
+                          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
+                          <div class="col-sm-12 col-md-7">
+                            <input type="text" class="form-control">
+                          </div>
                         </div>
+                        <div class="form-group row mb-4">
+                          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Category</label>
+                          <div class="col-sm-12 col-md-7">
+                            <select class="form-control selectric">
+                              <option>Tech</option>
+                              <option>News</option>
+                              <option>Political</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Content</label>
+                          <div class="col-sm-12 col-md-7">
+                            <textarea class="summernote-simple"></textarea>
+                          </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                          <div class="col-sm-12 col-md-7">
+                            <button class="btn btn-primary">Publish</button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                </div>
+                  </div>
             </div>
         </section>
     </div>

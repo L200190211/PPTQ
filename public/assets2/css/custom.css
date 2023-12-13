@@ -15,3 +15,28 @@
 .card-header.space {justify-content: space-between;}
 .card-header.space .btn {border-radius: 0.25rem !important;line-height: 24px;padding: 0.3rem 0.8rem;
 letter-spacing: .5px;}
+
+.cover-team img {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.btn-center{display: flex; justify-content: center;}
+.btn-center .cta-btn {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 8px 28px;
+    border-radius: 25px;
+    transition: 0.5s;
+    margin-top: 10px;
+    border: 2px solid #1bbca3;
+    color: #000;
+}
+.btn-center .cta-btn:hover {
+    color: #fff;
+    background: #1bbca3;
+}

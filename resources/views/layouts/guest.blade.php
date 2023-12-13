@@ -27,7 +27,7 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     <!-- Template Main CSS File -->
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets2/css/custom.css') }}">
     @yield('scriptCSS')
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>

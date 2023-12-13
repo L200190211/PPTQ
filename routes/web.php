@@ -78,4 +78,5 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::get('/article', [ArticleController::class, 'article'])->name('article');
+    Route::get('/article/add', [ArticleController::class, 'add'])->name('addarticle');
 });

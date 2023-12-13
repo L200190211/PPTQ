@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class GuestController extends Controller
 {
+    // PAGE BERANDA
     public function beranda()
     {
-        return view('guest.beranda');
+        $team = Team::take(4)->orderBy('id', 'DESC')->get();
+        // dd($team); 
+        return view('guest.beranda', compact('team'));
     }
     public function profile()
     {

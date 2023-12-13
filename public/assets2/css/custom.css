@@ -7,14 +7,31 @@
 
 /*# sourceMappingURL=custom.css.map */
 
-.galery-i .galery img {width: 150px;height: auto;}
-.galery-i .galery .center-action{display: table-cell;vertical-align: middle; }
-.galery .center-action a{font-size: 12px; }
-.galery-t .galery img {width: 50px;height: auto;}
+.galery-i .galery img {
+    width: 150px;
+    height: auto;
+}
+.galery-i .galery .center-action {
+    display: table-cell;
+    vertical-align: middle;
+}
+.galery .center-action a {
+    font-size: 12px;
+}
+.galery-t .galery img {
+    width: 50px;
+    height: auto;
+}
 
-.card-header.space {justify-content: space-between;}
-.card-header.space .btn {border-radius: 0.25rem !important;line-height: 24px;padding: 0.3rem 0.8rem;
-letter-spacing: .5px;}
+.card-header.space {
+    justify-content: space-between;
+}
+.card-header.space .btn {
+    border-radius: 0.25rem !important;
+    line-height: 24px;
+    padding: 0.3rem 0.8rem;
+    letter-spacing: 0.5px;
+}
 
 .cover-team img {
     height: 300px;
@@ -22,7 +39,10 @@ letter-spacing: .5px;}
     object-fit: cover;
     object-position: center;
 }
-.btn-center{display: flex; justify-content: center;}
+.btn-center {
+    display: flex;
+    justify-content: center;
+}
 .btn-center .cta-btn {
     font-family: "Poppins", sans-serif;
     font-weight: 500;
@@ -39,4 +59,35 @@ letter-spacing: .5px;}
 .btn-center .cta-btn:hover {
     color: #fff;
     background: #1bbca3;
+}
+.grid-2 {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+}
+/* SAMPUL PHOTO */
+.sampul-x {
+    width: 125px;
+    height: 125px;
+    position: relative;
+    border-radius: 100%;
+    border: none;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    margin: -35px -5px 0 30px;
+}
+.sampul {
+    width: 35px;
+    height: 35px;
+    position: relative;
+    border-radius: 100%;
+    border: none;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+div#prev {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }

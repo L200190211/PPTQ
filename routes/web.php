@@ -33,6 +33,7 @@ Route::get('/divisi/tahfiz', [GuestController::class, 'tahfiz'])->name('divisi/t
 Route::get('/divisi/santri', [GuestController::class, 'santri'])->name('divisi/santri');
 Route::get('/regist', [PpshbController::class, 'regist'])->name('regist');
 Route::post('/regist/addregist', [PpshbController::class, 'addregist'])->name('regist/addregist');
+Route::get('/regist/closed', [PpshbController::class, 'registclosed'])->name('registclosed');
 
 Auth::routes();
 
@@ -61,6 +62,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/editkip/{id}', [PpshbController::class, 'editkip'])->name('editkip');
     Route::post('/editsurat_sedia/{id}', [PpshbController::class, 'editsurat_sedia'])->name('editsurat_sedia');
     Route::post('/editsurat_absah/{id}', [PpshbController::class, 'editsurat_absah'])->name('editsurat_absah');
+    Route::get('date/{datePpshb}', [PpshbController::class, 'date'])->name('date');
+    Route::post('/dateupdate/{datePpshb}', [PpshbController::class, 'dateupdate'])->name('dateupdate');
+
 
     Route::get('activity/complementary', [CompPpshbController::class, 'complementary'])->name('complementary');
     Route::get('/activity/complementary/add', [CompPpshbController::class, 'add'])->name('addcomp');

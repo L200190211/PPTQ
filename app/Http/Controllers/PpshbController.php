@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
+use App\Models\DatePpshb;
 use App\Models\Ppshb;
+use App\Models\User;
 use Alert;
 
 class PpshbController extends Controller
@@ -26,11 +27,36 @@ class PpshbController extends Controller
         return view('admin.ppshb.view', compact('data'));
     }
 
+    // Atur Rentang Pendaftaran PPSHB
+    public function date(DatePpshb $datePpshb)
+    {
+        $data = DatePpshb::find($datePpshb);
+        return view('admin.ppshb.date', compact('data'));
+    }
+    public function dateupdate($datePpshb, Request $request)
+    {
+        $data = DatePpshb::find($datePpshb);
+        if ($request['start'] >= $request['end']) {
+            toast('Tanggal tidak valid', 'error');
+            return redirect()->route('date', 1);
+        } else {
+            $data->start     = $request['start'];
+            $data->end   = $request['end'];
+            $data->save();
+            toast('Tanggal berhasil diinput', 'success');
+            return redirect()->route('ppshb');
+        }
+    }
+
     // SISWA
     // Daftar PPSHB
-    function regist()
+    public function regist()
     {
         return view('guest.registration');
+    }
+    public function registclosed()
+    {
+        return view('guest.registration-closed');
     }
     public function addregist(Request $request)
     {
@@ -90,6 +116,15 @@ class PpshbController extends Controller
                     $data->pasphoto = $filename;
                     $data->save();
                     return redirect()->route('main');
+                } else {
+                    // if data null ->for add new
+                    $image = $request->file('pasphoto');
+                    $file_extension = $request->file('pasphoto')->getClientOriginalExtension();
+                    $filename = 'pasphoto-' . Auth::user()->id . rand(100, 999) . '.' . $file_extension;;
+                    $image->move('img/berkas/', $filename);
+                    $data->pasphoto = $filename;
+                    $data->save();
+                    return redirect()->route('main');
                 }
             } else {
                 // if data null ->for add new
@@ -123,6 +158,14 @@ class PpshbController extends Controller
                     $image = $request->file('rapot');
                     $file_extension = $request->file('rapot')->getClientOriginalExtension();
                     $filename = 'rapot-' . Auth::user()->id . rand(100, 999) . '.' . $file_extension;
+                    $image->move('img/berkas/', $filename);
+                    $data->rapot = $filename;
+                    $data->save();
+                } else {
+                    // if data null ->for add new
+                    $image = $request->file('rapot');
+                    $file_extension = $request->file('rapot')->getClientOriginalExtension();
+                    $filename = 'rapot-' . Auth::user()->id . rand(100, 999) . '.' . $file_extension;;
                     $image->move('img/berkas/', $filename);
                     $data->rapot = $filename;
                     $data->save();
@@ -162,6 +205,14 @@ class PpshbController extends Controller
                     $image->move('img/berkas/', $filename);
                     $data->ijazah = $filename;
                     $data->save();
+                } else {
+                    // if data null ->for add new
+                    $image = $request->file('ijazah');
+                    $file_extension = $request->file('ijazah')->getClientOriginalExtension();
+                    $filename = 'ijazah-' . Auth::user()->id . rand(100, 999) . '.' . $file_extension;;
+                    $image->move('img/berkas/', $filename);
+                    $data->ijazah = $filename;
+                    $data->save();
                 }
             } else {
                 // if data null ->for add new
@@ -195,6 +246,14 @@ class PpshbController extends Controller
                     $image = $request->file('skl');
                     $file_extension = $request->file('skl')->getClientOriginalExtension();
                     $filename = 'skl-' . Auth::user()->id . rand(100, 999) . '.' . $file_extension;
+                    $image->move('img/berkas/', $filename);
+                    $data->skl = $filename;
+                    $data->save();
+                } else {
+                    // if data null ->for add new
+                    $image = $request->file('skl');
+                    $file_extension = $request->file('skl')->getClientOriginalExtension();
+                    $filename = 'skl-' . Auth::user()->id . rand(100, 999) . '.' . $file_extension;;
                     $image->move('img/berkas/', $filename);
                     $data->skl = $filename;
                     $data->save();
@@ -234,6 +293,14 @@ class PpshbController extends Controller
                     $image->move('img/berkas/', $filename);
                     $data->kk = $filename;
                     $data->save();
+                } else {
+                    // if data null ->for add new
+                    $image = $request->file('kk');
+                    $file_extension = $request->file('kk')->getClientOriginalExtension();
+                    $filename = 'kk-' . Auth::user()->id . rand(100, 999) . '.' . $file_extension;;
+                    $image->move('img/berkas/', $filename);
+                    $data->kk = $filename;
+                    $data->save();
                 }
             } else {
                 // if data null ->for add new
@@ -267,6 +334,14 @@ class PpshbController extends Controller
                     $image = $request->file('akta');
                     $file_extension = $request->file('akta')->getClientOriginalExtension();
                     $filename = 'akta-' . Auth::user()->id . rand(100, 999) . '.' . $file_extension;
+                    $image->move('img/berkas/', $filename);
+                    $data->akta = $filename;
+                    $data->save();
+                } else {
+                    // if data null ->for add new
+                    $image = $request->file('akta');
+                    $file_extension = $request->file('akta')->getClientOriginalExtension();
+                    $filename = 'akta-' . Auth::user()->id . rand(100, 999) . '.' . $file_extension;;
                     $image->move('img/berkas/', $filename);
                     $data->akta = $filename;
                     $data->save();
@@ -306,6 +381,14 @@ class PpshbController extends Controller
                     $image->move('img/berkas/', $filename);
                     $data->kip = $filename;
                     $data->save();
+                } else {
+                    // if data null ->for add new
+                    $image = $request->file('kip');
+                    $file_extension = $request->file('kip')->getClientOriginalExtension();
+                    $filename = 'kip-' . Auth::user()->id . rand(100, 999) . '.' . $file_extension;;
+                    $image->move('img/berkas/', $filename);
+                    $data->kip = $filename;
+                    $data->save();
                 }
             } else {
                 // if data null ->for add new
@@ -342,6 +425,14 @@ class PpshbController extends Controller
                     $image->move('img/berkas/', $filename);
                     $data->surat_sedia = $filename;
                     $data->save();
+                } else {
+                    // if data null ->for add new
+                    $image = $request->file('surat_sedia');
+                    $file_extension = $request->file('surat_sedia')->getClientOriginalExtension();
+                    $filename = 'surat_sedia-' . Auth::user()->id . rand(100, 999) . '.' . $file_extension;;
+                    $image->move('img/berkas/', $filename);
+                    $data->surat_sedia = $filename;
+                    $data->save();
                 }
             } else {
                 // if data null ->for add new
@@ -375,6 +466,14 @@ class PpshbController extends Controller
                     $image = $request->file('surat_absah');
                     $file_extension = $request->file('surat_absah')->getClientOriginalExtension();
                     $filename = 'surat_absah-' . Auth::user()->id . rand(100, 999) . '.' . $file_extension;
+                    $image->move('img/berkas/', $filename);
+                    $data->surat_absah = $filename;
+                    $data->save();
+                } else {
+                    // if data null ->for add new
+                    $image = $request->file('surat_absah');
+                    $file_extension = $request->file('surat_absah')->getClientOriginalExtension();
+                    $filename = 'surat_absah-' . Auth::user()->id . rand(100, 999) . '.' . $file_extension;;
                     $image->move('img/berkas/', $filename);
                     $data->surat_absah = $filename;
                     $data->save();

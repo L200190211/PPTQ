@@ -5,25 +5,6 @@
             display: flex;
             gap: 1rem;
         }
-
-        .sampul {
-            width: 125px;
-            height: 125px;
-            position: relative;
-            border-radius: 100%;
-            border: none;
-            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-            margin: -35px -5px 0 30px;
-        }
-
-        div#prev {
-            width: 100%;
-            height: 100%;
-            border-radius: 100%;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
     </style>
 @endsection
 @section('content')
@@ -45,18 +26,18 @@
                             <div class="card profile-widget">
                                 <div class="profile-widget-header">
                                     @if (is_null($datas->pasphoto))
-                                        <div class="sampul">
+                                        <div class="sampul-x">
                                             <div id="prev" style="background-image: url(/img/dummy/ppshb.png);">
                                             </div>
                                         </div>
                                     @elseif (File::exists(public_path('img/berkas/' . $datas->pasphoto)))
-                                        <div class="sampul">
+                                        <div class="sampul-x">
                                             <div id="prev"
                                                 style="background-image: url(/img/berkas/{{ $datas->pasphoto }})">
                                             </div>
                                         </div>
                                     @else
-                                        <div class="sampul">
+                                        <div class="sampul-x">
                                             <div id="prev" style="background-image: url(/img/dummy/ppshb.png);">
                                             </div>
                                         </div>

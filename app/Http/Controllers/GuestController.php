@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DatePpshb;
 use App\Models\Team;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,7 @@ class GuestController extends Controller
     public function beranda()
     {
         $team = Team::take(4)->orderBy('id', 'DESC')->get();
-        // dd($team); 
+        // dd($team);
         return view('guest.beranda', compact('team'));
     }
     public function profile()
@@ -24,7 +25,8 @@ class GuestController extends Controller
     }
     public function psshb()
     {
-        return view('guest.psshb');
+        $date = DatePpshb::find(1);
+        return view('guest.psshb', compact('date'));
     }
 
     public function contact()

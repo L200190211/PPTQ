@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{ asset('assets2/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets2/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('assets2/css/components.css') }}">
+    {{-- Datepicker --}}
+    <link rel="stylesheet" href="{{ asset('assets2/css/daterangepicker.css') }}">
 
     <!--  Datatables  -->
     <link rel="stylesheet" href="{{ asset('assets2/datatables/css/dataTables.1.13.6.bootstrap5.min.css') }}">
@@ -43,13 +45,17 @@
             <nav class="navbar navbar-expand-lg main-navbar">
                 <form class="form-inline mr-auto">
                     <ul class="navbar-nav mr-3">
-                        <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
-                        <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
+                        <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i
+                                    class="fas fa-bars"></i></a></li>
+                        <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i
+                                    class="fas fa-search"></i></a></li>
                     </ul>
                 </form>
                 <ul class="navbar-nav navbar-right">
-                    <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="{{ asset('assets2/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
+                    <li class="dropdown"><a href="#" data-toggle="dropdown"
+                            class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                            <img alt="image" src="{{ asset('assets2/img/avatar/avatar-1.png') }}"
+                                class="rounded-circle mr-1">
                             <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -61,7 +67,8 @@
                                 <i class="fas fa-cog"></i> Settings
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item  has-icon text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
+                            <a class="dropdown-item  has-icon text-danger" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
                                           document.getElementById('logout-form').submit();">
                                 <i class="fas fa-sign-out-alt"></i>
                                 Logout
@@ -89,36 +96,37 @@
                                 <i class="fas fa-fire"></i><span>Dashboard</span></a>
                         </li>
                         @if (\Auth::user()->admin == 'user')
-                        <li class="dropdown {{ request()->is('activity*') ? 'active' : '' }}">
-                            <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i>
-                                <span>Activity</span></a>
-                            <ul class="dropdown-menu">
-                                <li class="{{ request()->is('activity/main*') ? 'active' : '' }}">
-                                    <a class="nav-link" href="{{ route('main') }}">Main Data's</a>
-                                </li>
-                                <li class="{{ request()->is('activity/complementary*') ? 'active' : '' }}">
-                                    <a class="nav-link" href="{{ route('complementary') }}">Complementary Data's</a>
-                                </li>
-                            </ul>
-                        </li>
+                            <li class="dropdown {{ request()->is('activity*') ? 'active' : '' }}">
+                                <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i>
+                                    <span>Activity</span></a>
+                                <ul class="dropdown-menu">
+                                    <li class="{{ request()->is('activity/main*') ? 'active' : '' }}">
+                                        <a class="nav-link" href="{{ route('main') }}">Main Data's</a>
+                                    </li>
+                                    <li class="{{ request()->is('activity/complementary*') ? 'active' : '' }}">
+                                        <a class="nav-link" href="{{ route('complementary') }}">Complementary
+                                            Data's</a>
+                                    </li>
+                                </ul>
+                            </li>
                         @endif
                         @if (\Auth::user()->admin == 'super_admin')
-                        <li class="{{ request()->is('ppshb') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('ppshb') }}">
-                                <i class="fas fa-th"></i><span>PPSHB</span></a>
-                        </li>
-                        <li class="{{ request()->is('galery') ? 'active' : '' }}">
+                            <li class="{{ request()->is('ppshb') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('ppshb') }}">
+                                    <i class="fas fa-th"></i><span>PPSHB</span></a>
+                            </li>
+                            {{-- <li class="{{ request()->is('galery') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('galery') }}">
                                 <i class="fas fa-th"></i><span>Galery</span></a>
-                        </li>
-                        <li class="{{ request()->is('team*') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('team') }}">
-                                <i class="fa fa-users" aria-hidden="true"></i><span>Our Team</span></a>
-                        </li>
-                        <li class="{{ request()->is('article') ? 'active' : '' }}">
+                        </li> --}}
+                            <li class="{{ request()->is('team*') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('team') }}">
+                                    <i class="fa fa-users" aria-hidden="true"></i><span>Our Team</span></a>
+                            </li>
+                            {{-- <li class="{{ request()->is('article') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('article') }}">
                                 <i class="fas fa-newspaper" aria-hidden="true"></i><span>Article</span></a>
-                        </li>
+                        </li> --}}
                         @endif
                         <li class="menu-header">Pages</li>
                         <li class="dropdown {{ request()->is('user*') ? 'active' : '' }}">
@@ -174,7 +182,8 @@
     <!-- Template JS File -->
     <script src="{{ asset('assets2/js/scripts.js') }}"></script>
     <script src="{{ asset('assets2/js/custom.js') }}"></script>
-
+    {{-- Datepicker --}}
+    <script src="{{ asset('assets2/js/daterangepicker.js') }}"></script>
     <!-- Datatables  -->
     <script src="{{ asset('assets2/datatables/js/jquery.1.13.6.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets2/datatables/js/dataTables.1.13.6.bootstrap5.min.js') }}"></script>

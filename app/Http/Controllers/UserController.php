@@ -13,7 +13,8 @@ class UserController extends Controller
 {
     public function profile()
     {
-        $data = User::find(Auth::user()->id);
+        $data = User::with('ppshb')->find(Auth::user()->id);
+        // dd($data);
         return view('admin.users.profile', compact('data'));
     }
     public function edituser(Request $request)

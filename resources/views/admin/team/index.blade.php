@@ -1,25 +1,5 @@
 @extends('layouts.admin')
-@section('scriptCSS')
-    <style>
-        .sampul {
-            width: 35px;
-            height: 35px;
-            position: relative;
-            border-radius: 100%;
-            border: none;
-            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-        }
 
-        div#prev {
-            width: 100%;
-            height: 100%;
-            border-radius: 100%;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-    </style>
-@endsection
 @section('content')
     <!-- Main Content -->
     <div class="main-content">

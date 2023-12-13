@@ -7,7 +7,7 @@
             <div class="container">
 
                 <div class="section-title">
-                    <h2>Profil Singkat</h2>
+                    <h2>Pengenalan Singkat</h2>
                     <p>
                         Pondok Pesantren Tahfizhul Qur’an Al Rasyid yang berdiri sejak tahun pelajaran 2019 adalah Pesantren
                         yang menerapkan pendekatan penyelenggaraan proses belajar dengan memadukan pendidikan Tahfizhul
@@ -39,25 +39,6 @@
 
             </div>
         </section><!-- End About Us Section -->
-
-        <!-- ======= Counts Section ======= -->
-        <section class="counts">
-            <div class="container">
-                <div class="row no-gutters">
-
-                    <div class="col-lg-12 col-md-12 d-md-flex align-items-md-stretch">
-                        <div class="count-box">
-                            <iframe width="100%" height="450" src="https://www.youtube.com/embed/dUcLeNiCVNw"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-        </section><!-- End Counts Section -->
 
     </main><!-- End #main -->
 @endsection

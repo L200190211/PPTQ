@@ -208,13 +208,13 @@
                                 <div class="cover-team">
                                     {{-- data null --}}
                                     @if (is_null($teams->sampul))
-                                        <img src="{{ asset('img/sampul/team.jpg') }}" alt="" width="50px">
+                                        <img src="{{ asset('img/dummy/team.jpg') }}" alt="" width="50px">
                                         {{-- data available --}}
                                     @elseif (File::exists(public_path('img/sampul/' . $teams->sampul)))
                                         <img src="/img/sampul/{{ $teams->sampul }}" alt="" width="50px">
                                         {{-- file not found --}}
                                     @else
-                                        <img src="{{ asset('img/sampul/team.jpg') }}" alt="" width="50px">
+                                        <img src="{{ asset('img/dummy/team.jpg') }}" alt="" width="50px">
                                     @endif
                                 </div>
                                 <div class="member-info">
@@ -232,7 +232,7 @@
                     @endforeach
                 </div>
                 <div class="btn-center">
-                    <a class="cta-btn" href="#">Call To Action</a>
+                    <a class="cta-btn" href="{{ route('team_unit') }}">Call To Action</a>
                 </div>
             </div>
         </section><!-- End Our Team Section -->

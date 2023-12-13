@@ -28,12 +28,12 @@
                                         <div class="form-group">
                                             <label>Start Date</label>
                                             <input type="text" name="start" class="form-control datepicker"
-                                                value="{{ $datas->start ?? now() }}">
+                                                value="{{ $datas->start ?? null }}" required>
                                         </div>
                                         <div class="form-group">
                                             <label>End Date</label>
                                             <input type="text" name="end" class="form-control datepicker"
-                                                value="{{ $datas->end ?? now() }}">
+                                                value="{{ $datas->end ?? null }}" required>
                                         </div>
                                     </div>
                                     <div class="card-footer text-right">

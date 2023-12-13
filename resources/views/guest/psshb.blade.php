@@ -12,7 +12,7 @@
                     <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
 
                         <div class="content">
-                            <h3>Eum ipsam laborum deleniti <strong>velit pariatur architecto aut nihil</strong></h3>
+                            <h3>Syarat Melakukan<strong>PPSHB</strong></h3>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                                 labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
@@ -71,7 +71,7 @@
                     </div>
 
                     <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img"
-                        style="background-image: url(assets/img/info-box.jpg);">&nbsp;</div>
+                        style="background-image: url(img/dummy/guest1.jpg);">&nbsp;</div>
                 </div>
 
             </div>
@@ -86,8 +86,12 @@
                     <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
                         pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
                         anim id est laborum.</p>
-                        <a class="cta-btn" href="{{ route('registclosed') }}">Daftar</a>
+                    <?php $now = Carbon::tomorrow(); ?>
+                    @if ($now->between($date->start, $date->end))
                         <a class="cta-btn" href="{{ route('regist') }}">Daftar</a>
+                    @else
+                        <a class="cta-btn" href="{{ route('registclosed') }}">Daftar</a>
+                    @endif
                 </div>
 
             </div>

@@ -14,7 +14,9 @@
     <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="{{ asset('assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
@@ -46,14 +48,22 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li>
-                        <a href="{{ route('beranda') }}" class="nav-link scrollto {{ request()->is('/') ? 'active' : '' }}">Beranda
+                        <a href="{{ route('beranda') }}"
+                            class="nav-link scrollto {{ request()->is('/') ? 'active' : '' }}">Beranda
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('profile') }}" class="nav-link scrollto {{ request()->is('profile') ? 'active' : '' }}">Profile
+                        <a href="{{ route('profile') }}"
+                            class="nav-link scrollto {{ request()->is('profile') ? 'active' : '' }}">Profile
                         </a>
                     </li>
-                    <li><a href="{{ route('galeri') }}" class="nav-link scrollto {{ request()->is('galeri') ? 'active' : '' }}">Galeri</a></li>
+                    <li>
+                        <a href="{{ route('team_unit') }}"
+                            class="nav-link scrollto {{ request()->is('team_unit') ? 'active' : '' }}">Team
+                        </a>
+                    </li>
+                    <li><a href="{{ route('galeri') }}"
+                            class="nav-link scrollto {{ request()->is('galeri') ? 'active' : '' }}">Galeri</a></li>
                     <li class="dropdown">
                         <a href="#" class="nav-link scrollto {{ request()->is('unit*') ? 'active' : '' }}">
                             <span>Unit Pendidikan</span>
@@ -65,7 +75,7 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="nav-link scrollto{{ request()->is('divisi*') ? 'active' : '' }}">
+                        <a href="#" class="nav-link scrollto {{ request()->is('divisi*') ? 'active' : '' }}">
                             <span>Divisi</span>
                             <i class="bi bi-chevron-down"></i>
                         </a>
@@ -74,8 +84,10 @@
                             <li><a href="{{ route('divisi/santri') }}">Kesantrian</a></li>
                         </ul>
                     </li>
-                    <li><a class="nav-link scrollto {{ request()->is('psshb*', 'regist*') ? 'active' : '' }}" href="{{ route('psshb') }}">PSSHB</a></li>
-                    <li><a class="nav-link scrollto {{ request()->is('contact') ? 'active' : '' }}" href="{{ route('contact') }}">Contact</a></li>
+                    <li><a class="nav-link scrollto {{ request()->is('psshb*', 'regist*') ? 'active' : '' }}"
+                            href="{{ route('psshb') }}">PSSHB</a></li>
+                    <li><a class="nav-link scrollto {{ request()->is('contact') ? 'active' : '' }}"
+                            href="{{ route('contact') }}">Contact</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -148,7 +160,8 @@
         </div>
     </footer><!-- End Footer -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="{{ asset('assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>

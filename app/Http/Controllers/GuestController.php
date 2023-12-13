@@ -23,6 +23,11 @@ class GuestController extends Controller
     {
         return view('guest.galeri');
     }
+    public function team()
+    {
+        $team = Team::orderBy('id', 'DESC')->paginate(12);;
+        return view('guest.team', compact('team'));
+    }
     public function psshb()
     {
         $date = DatePpshb::find(1);
@@ -41,11 +46,11 @@ class GuestController extends Controller
     {
         return view('guest.unit-ma');
     }
-    public function tahfiz()
+    public function divisitahfiz()
     {
         return view('guest.divisi-tahfiz');
     }
-    public function santri()
+    public function divisisantri()
     {
         return view('guest.divisi-santri');
     }

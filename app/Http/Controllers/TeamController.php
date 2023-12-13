@@ -88,9 +88,15 @@ class TeamController extends Controller
     {
         $FilePath = Team::select('sampul')->where('id', $id)->first();
         $path = public_path() . "/img/sampul/" . $FilePath->sampul;
-        unlink($path);
-        $data = Team::find($id);
-        $data->delete();
-        return redirect()->route('team');
+        if (file_exists($path)) {
+            unlink($path);
+            $data = Team::find($id);
+            $data->delete();
+            return redirect()->route('team');
+        } else {
+            $data = Team::find($id);
+            $data->delete();
+            return redirect()->route('team');
+        }
     }
 }

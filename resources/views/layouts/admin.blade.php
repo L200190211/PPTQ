@@ -111,7 +111,7 @@
                             </li>
                         @endif
                         @if (\Auth::user()->admin == 'super_admin')
-                            <li class="{{ request()->is('ppshb') ? 'active' : '' }}">
+                            <li class="{{ request()->is('ppshb*', 'date*') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('ppshb') }}">
                                     <i class="fas fa-th"></i><span>PPSHB</span></a>
                             </li>

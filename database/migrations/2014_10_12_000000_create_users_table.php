@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('asal_sekolah')->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->date('tgl_lahir')->nullable();
+            $table->enum('status', ['Active', 'Pause'])->default('Active');
             $table->rememberToken();
             $table->timestamps();
         });

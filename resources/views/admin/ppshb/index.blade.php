@@ -33,6 +33,7 @@
                                                     <th>Photo</th>
                                                     <th>Name</th>
                                                     <th>School</th>
+                                                    <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -69,15 +70,22 @@
                                                         <td>
                                                             {{ isset($datas->user->asal_sekolah) ? $datas->user->asal_sekolah : 'NULL' }}
                                                         </td>
+                                                        <td>
+                                                            @if ($datas->user->status == 'Active')
+                                                                <span
+                                                                    class="badge badge-info">{{ $datas->user->status }}</span>
+                                                            @else
+                                                                <span
+                                                                    class="badge badge-dark">{{ $datas->user->status }}</span>
+                                                            @endif
+                                                        </td>
                                                         <td class="center-action">
                                                             <a href="/ppshb/view/{{ $datas->user->id }}"
                                                                 class="btn btn-icon icon-left btn-warning">
                                                                 <i class="far fa-eye"></i>View</a>
-                                                            <a href="/team/editteam/{{-- $datas->id --}}"
-                                                                class="btn btn-icon icon-left btn-primary">
-                                                                <i class="far fa-edit"></i>Edit</a>
-                                                            <a href="/delteam/{{-- $datas->id --}}" class="btn btn-danger">
-                                                                <i class="fas fa-times"></i> Delete</a>
+                                                            <a href="/delteam/{{ $datas->user->id }}"
+                                                                class="btn btn-danger change-x">
+                                                                <i class="fas fa-times"></i> Change</a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -97,5 +105,29 @@
 @section('scriptJS')
     <script>
         new DataTable('#example');
+        $(document).ready(function() {
+            $('.change-x').on('click', function(event) {
+                event.preventDefault();
+                const url = $(this).attr('href');
+
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                    }
+                });
+            });
+        });
     </script>
 @endsection

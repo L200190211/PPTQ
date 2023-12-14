@@ -34,6 +34,7 @@
                                                 <th>Name</th>
                                                 <th>School</th>
                                                 <th>Status</th>
+                                                <th>Progress</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -41,7 +42,7 @@
                                             <?php $i = 1; ?>
                                             @foreach ($data as $datas)
                                             <tr>
-                                                <th scope="row" style="width: 2%;">{{ $i++ }}</th>
+                                                <th scope="row" style="width: 2%;">{{ 1 + $i++ }}</th>
                                                 <td>
                                                     {{-- data null --}}
                                                     @if (is_null($datas->pasphoto))
@@ -73,6 +74,21 @@
                                                     @else
                                                     <span class="badge badge-dark">{{ $datas->user->status }}</span>
                                                     @endif
+                                                </td>
+                                                <td><?php $a = isset($datas->pasphoto) ? 1 : 0 ?>
+                                                    <?php $b = isset($datas->rapot) ? 1 : 0 ?>
+                                                    <?php $c = isset($datas->ijazah) ? 1 : 0 ?>
+                                                    <?php $d = isset($datas->skl) ? 1 : 0 ?>
+                                                    <?php $e = isset($datas->kk) ? 1 : 0 ?>
+                                                    <?php $f = isset($datas->akta) ? 1 : 0 ?>
+                                                    <?php $g = isset($datas->kip) ? 1 : 0 ?>
+                                                    <?php $h = isset($datas->surat_sedia) ? 1 : 0 ?>
+                                                    <?php $i = isset($datas->surat_absah) ? 1 : 0 ?>
+                                                    <?php $total = $a + $b + $c + $d + $e + $f + $g + $h + $i ?>
+                                                    <?php $percent = number_format($total / 9 * 100, 0) ?>
+                                                    <div class="progress mb-3">
+                                                        <div class="progress-bar" role="progressbar" data-width="{{$percent}}%" aria-valuenow="{{$percent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$percent}}%;">{{$percent}}%</div>
+                                                    </div>
                                                 </td>
                                                 <td class="center-action">
                                                     <a href="/ppshb/view/{{ $datas->user->id }}" class="btn btn-icon icon-left btn-warning">
@@ -115,7 +131,7 @@
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
                 confirmButtonText: "Iya",
-                cancelButtonText: "Tidak Jadi" 
+                cancelButtonText: "Tidak Jadi"
             }).then((result) => {
                 if (result.isConfirmed) {
                     window.location.href = url;

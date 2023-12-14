@@ -97,7 +97,7 @@
                                                     <a href="/changepause/{{ $datas->user->id }}" class="btn btn-danger pause">
                                                         <i class="fas fa-pause"></i> Pause</a>
                                                     @else
-                                                    <a href="/changeactive/{{ $datas->user->id }}" class="btn btn-success active">
+                                                    <a href="/changeactive/{{ $datas->user->id }}" class="btn btn-success aktif">
                                                         <i class="fas fa-check"></i> Active</a>
                                                     @endif
                                                 </td>
@@ -138,7 +138,7 @@
                 }
             });
         });
-        $('.active').on('click', function(event) {
+        $('.aktif').on('click', function(event) {
             event.preventDefault();
             const url = $(this).attr('href');
 

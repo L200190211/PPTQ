@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Team;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Alert;
 
 class TeamController extends Controller
 {

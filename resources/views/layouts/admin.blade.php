@@ -187,7 +187,8 @@
     <!-- Datatables  -->
     <script src="{{ asset('assets2/datatables/js/jquery.1.13.6.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets2/datatables/js/dataTables.1.13.6.bootstrap5.min.js') }}"></script>
-
+    {{-- swwal sweetalert --}}
+    <script src="{{ asset('assets2/js/sweetalert2@11.js') }}"></script>
     @yield('scriptJS')
     @include('sweetalert::alert')
 </body>

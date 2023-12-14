@@ -83,7 +83,7 @@
                                                             <a href="/ppshb/view/{{ $datas->user->id }}"
                                                                 class="btn btn-icon icon-left btn-warning">
                                                                 <i class="far fa-eye"></i>View</a>
-                                                            <a href="/delteam/{{ $datas->user->id }}"
+                                                            <a href="{{ route('delteam', $datas->user->id) }}"
                                                                 class="btn btn-danger change-x">
                                                                 <i class="fas fa-times"></i> Change</a>
                                                         </td>

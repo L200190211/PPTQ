@@ -76,7 +76,8 @@
                                                             <a href="/team/editteam/{{ $datas->id }}"
                                                                 class="btn btn-icon icon-left btn-primary">
                                                                 <i class="far fa-edit"></i>Edit</a>
-                                                            <a href="/delteam/{{ $datas->id }}" class="btn btn-danger">
+                                                            <a id="dell" href="/delteam/{{ $datas->id }}"
+                                                                class="btn btn-danger dell">
                                                                 <i class="fas fa-times"></i> Delete</a>
                                                         </td>
                                                     </tr>
@@ -96,6 +97,27 @@
 @endsection
 @section('scriptJS')
     <script>
+        $(document).ready(function() {
+            $('#dell').on('click', function(event) {
+                event.preventDefault();
+                const url = $(this).attr('href');
+
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!",
+                    cancelButtonText: "Cancel"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = url;
+                    }
+                });
+            });
+        });
         new DataTable('#example');
     </script>
 @endsection

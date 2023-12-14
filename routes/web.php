@@ -65,6 +65,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/editsurat_absah/{id}', [PpshbController::class, 'editsurat_absah'])->name('editsurat_absah');
     Route::get('date/{datePpshb}', [PpshbController::class, 'date'])->name('date');
     Route::post('/dateupdate/{datePpshb}', [PpshbController::class, 'dateupdate'])->name('dateupdate');
+    Route::get('/changepause/{id}', [PpshbController::class, 'changepause'])->name('changepause');
+    Route::get('/changeactive/{id}', [PpshbController::class, 'changeactive'])->name('changeactive');
 
 
     Route::get('activity/complementary', [CompPpshbController::class, 'complementary'])->name('complementary');

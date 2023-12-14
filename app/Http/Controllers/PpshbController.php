@@ -47,6 +47,23 @@ class PpshbController extends Controller
             return redirect()->route('ppshb');
         }
     }
+    // CHANGE STATUS PPSHB
+    public function changepause($id)
+    {
+        $data = User::findOrFail($id);
+        $data->status = "Pause";
+        $data->save();
+        Alert::success('Status Diubah');
+        return redirect()->back();
+    }
+    public function changeactive($id)
+    {
+        $data = User::findOrFail($id);
+        $data->status = "Active";
+        $data->save();
+        Alert::success('Status Diubah');
+        return redirect()->back();
+    }
 
     // SISWA
     // Daftar PPSHB
